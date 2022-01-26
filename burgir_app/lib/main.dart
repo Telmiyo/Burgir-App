@@ -65,7 +65,6 @@ class _NavigationState extends State<Navigation> {
           ];
         }
         return Scaffold(
-          appBar: AppBar(title: const Text("Burgir App")),
           body: IndexedStack(
             children: [
               Center(
