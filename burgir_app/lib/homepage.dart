@@ -24,11 +24,11 @@ class HomePage extends StatelessWidget {
           children: [
             const Header("Burger Collection"),
             HomePageButton("About Us",
-                MaterialPageRoute(builder: (context) => AboutUs(doc[1]))),
+                MaterialPageRoute(builder: (context) => AboutUs(doc[0]))),
             HomePageButton("New About Us",
                 MaterialPageRoute(builder: (context) => const NewAboutUs())),
             HomePageButton("Catalogue",
-                MaterialPageRoute(builder: (context) => Catalogue(doc))),
+                MaterialPageRoute(builder: (context) => Catalogue(doc[1]))),
           ],
         ),
       ),

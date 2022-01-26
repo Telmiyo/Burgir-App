@@ -1,9 +1,11 @@
+import 'package:burgir_app/newaboutus.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 import 'package:firebase_core/firebase_core.dart';
+import 'aboutus.dart';
+import 'catalogue.dart';
 import 'firebase_options.dart';
-import 'homepage.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -24,49 +26,126 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.amber,
       ),
-      home: const MyHomePage(),
+      home: const Navigation(),
     );
   }
 }
 
-class MyHomePage extends StatelessWidget {
-  const MyHomePage({Key? key}) : super(key: key);
+class Navigation extends StatefulWidget {
+  const Navigation({Key? key}) : super(key: key);
 
-  get refresh => null;
+  @override
+  _NavigationState createState() => _NavigationState();
+}
+
+class _NavigationState extends State<Navigation> {
+  CollectionReference burgers =
+      FirebaseFirestore.instance.collection('Burgers');
+  int _selectedIndex = 0;
+  late List<Widget> widgetOptions;
+  void _onItemTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
-    CollectionReference burgers =
-        FirebaseFirestore.instance.collection('Burgers');
-    //CollectionReference users = FirebaseFirestore.instance.collection('users');
-    //dynamic doc;
     return FutureBuilder<QuerySnapshot>(
       future: burgers.get(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: CircularProgressIndicator());
         }
+        if (snapshot.hasData) {
+          widgetOptions = [
+            Catalogue(snapshot.data!.docs[1]),
+            const NewAboutUs(),
+            AboutUs(snapshot.data!.docs[0])
+          ];
+        }
         return Scaffold(
-            appBar: AppBar(title: const Text("Burgir App")),
-            body: Stack(alignment: Alignment.topCenter, children: [
-              Align(
-                alignment: Alignment.center,
-                child: Container(
-                  margin: const EdgeInsets.all(25),
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(25),
-                      color: Colors.green),
-                  child: IconButton(
-                    icon: const Icon(Icons.add),
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => HomePage(snapshot.data!.docs)));
-                    },
-                  ),
-                ),
+          appBar: AppBar(title: const Text("Burgir App")),
+          body: IndexedStack(
+            children: [
+              Center(
+                child: widgetOptions.elementAt(_selectedIndex),
               ),
-            ]));
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home, color: Colors.grey), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.shopping_cart, color: Colors.grey),
+                  label: 'Shopping Cart'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.person, color: Colors.grey),
+                  label: 'Account'),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTap,
+          ),
+        );
       },
+    );
+  }
+}
+
+//Logo Animation
+class LogoAnimation extends StatefulWidget {
+  const LogoAnimation({Key? key}) : super(key: key);
+
+  @override
+  _AnimatedRotatingGalaxyDemoState createState() =>
+      _AnimatedRotatingGalaxyDemoState();
+}
+
+class _AnimatedRotatingGalaxyDemoState extends State<LogoAnimation>
+    with SingleTickerProviderStateMixin {
+  late AnimationController controller;
+  late Animation<double> _rotation;
+
+  @override
+  void initState() {
+    super.initState();
+    controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 10),
+    );
+    controller.repeat();
+    _rotation = controller;
+  }
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          RotationTransition(
+            turns: _rotation,
+            child: Container(
+              width: 150,
+              height: 150,
+              padding: const EdgeInsets.all(10),
+              color: Colors.transparent,
+              child: const Center(
+                  child: Image(
+                image: AssetImage('assets/logo.png'),
+              )),
+            ),
+          ),
+          const SizedBox(height: 50),
+        ],
+      ),
     );
   }
 }

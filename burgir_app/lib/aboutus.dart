@@ -16,7 +16,7 @@ class AboutUs extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(20),
             child: Text(
-              doc["AboutUs"].toString(),
+              doc["Desc"].toString(),
               style: const TextStyle(fontSize: 25),
             ),
           ),
