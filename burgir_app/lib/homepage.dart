@@ -1,3 +1,5 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'catalogue.dart';
 import 'aboutus.dart';
 import 'newaboutus.dart';
@@ -8,7 +10,7 @@ final configurations = Configurations();
 
 // ignore: must_be_immutable
 class HomePage extends StatelessWidget {
-  dynamic doc;
+  List<QueryDocumentSnapshot<Object?>> doc;
   HomePage(this.doc, {Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -22,7 +24,7 @@ class HomePage extends StatelessWidget {
           children: [
             const Header("Burger Collection"),
             HomePageButton("About Us",
-                MaterialPageRoute(builder: (context) => AboutUs(doc))),
+                MaterialPageRoute(builder: (context) => AboutUs(doc[1]))),
             HomePageButton("New About Us",
                 MaterialPageRoute(builder: (context) => const NewAboutUs())),
             HomePageButton("Catalogue",

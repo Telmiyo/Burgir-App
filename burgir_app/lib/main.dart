@@ -60,8 +60,7 @@ class MyHomePage extends StatelessWidget {
                     icon: const Icon(Icons.add),
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) =>
-                              HomePage(snapshot.data!.docs[0].data())));
+                          builder: (context) => HomePage(snapshot.data!.docs)));
                     },
                   ),
                 ),

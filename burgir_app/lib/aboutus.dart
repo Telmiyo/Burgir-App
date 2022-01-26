@@ -1,7 +1,8 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
-  final dynamic doc;
+  final DocumentSnapshot doc;
   const AboutUs(this.doc, {Key? key}) : super(key: key);
 
   @override
@@ -15,7 +16,7 @@ class AboutUs extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(20),
             child: Text(
-              doc["AboutUs"],
+              doc["AboutUs"].toString(),
               style: const TextStyle(fontSize: 25),
             ),
           ),
