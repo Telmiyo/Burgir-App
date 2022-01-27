@@ -1,12 +1,13 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'package:burgir_app/config.dart';
+import 'burger.dart';
 import 'burgerdetail.dart';
 import 'package:flutter/material.dart';
 
 import 'config.dart';
 
-final configurations = Configurations();
 List<Burger> burgerList = [];
 
 class Catalogue extends StatelessWidget {
@@ -51,6 +52,20 @@ class Catalogue extends StatelessWidget {
         },
       ),
     );
+    burgerList.clear();
+    AddBurgers(doc);
+    return Scaffold(
+        appBar: Configurations.instance.CustomAppbar("Burgers Catalogue"),
+        body: Scrollbar(
+          child: GridView.count(
+            childAspectRatio: 2 / 2.2,
+            crossAxisCount: 2,
+            children: [
+              for (int i = 0; i < burgerList.length; i++)
+                BurgerCard(burgerList[i])
+            ],
+          ),
+        ));
   }
   //AddBurgers(doc);
   // return Scaffold(
@@ -69,14 +84,8 @@ class Catalogue extends StatelessWidget {
 
 // ignore: non_constant_identifier_names
 void AddBurgers(dynamic doc) {
-  burgerList.add(Burger("Burger #1", 1, 1));
-  burgerList.add(Burger("Burger #2", 1, 1));
-  burgerList.add(Burger("Burger #3", 1, 1));
-  burgerList.add(Burger("Burger #4", 1, 1));
-  burgerList.add(Burger("Burger #5", 1, 1));
-  burgerList.add(Burger("Burger #6", 1, 1));
-  burgerList.add(Burger("Burger #7", 1, 1));
-  burgerList.add(Burger("Burger #8", 1, 1));
+  // burgerList.add(Burger("Burger #1", 1, 1, false));
+  // burgerList.add(Burger("Burger #2", 1, 1, false));
 }
 
 class BurgerCard extends StatelessWidget {
@@ -91,7 +100,7 @@ class BurgerCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: configurations.mainColor.withAlpha(150),
+        color: Configurations.instance.mainColor.withAlpha(150),
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
@@ -106,8 +115,11 @@ class BurgerCard extends StatelessWidget {
           );
         },
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
+            Expanded(
+                child: Container(
               margin: const EdgeInsets.fromLTRB(
                 30,
                 30,
@@ -115,7 +127,7 @@ class BurgerCard extends StatelessWidget {
                 15,
               ),
               decoration: BoxDecoration(
-                color: configurations.secondaryColor,
+                color: Configurations.instance.secondaryColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10),
                 ),
@@ -128,7 +140,7 @@ class BurgerCard extends StatelessWidget {
               //"https://github.com/MartiDavicino/Flutter-App_Mobile-Devices/blob/main/App%20prototype/app_prototype/assets/1.png"),
               //image: AssetImage("assets/" + img.toString() + "png"),
               //),
-            ),
+            )),
             Text(
               burger.name,
               style: const TextStyle(
@@ -136,6 +148,7 @@ class BurgerCard extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
+            Configurations.instance.CustomText(burger.name, TextAlign.center),
           ],
         ),
       ),

@@ -1,4 +1,4 @@
-import 'package:burgir_app/whatis.dart';
+import 'wishlist.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -64,7 +64,7 @@ class _NavigationState extends State<Navigation> {
                   AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 widgetOptions = [
                   Catalogue(snapshot.data?.docs[1]),
-                  WhatIs(snapshot.data?.docs[0]),
+                  //WhatIs(snapshot.data?.docs[0]),
                   const AboutUs()
                 ];
                 return Scaffold(
@@ -92,11 +92,36 @@ class _NavigationState extends State<Navigation> {
                   ),
                 );
               });
+
+          // widgetOptions = [
+          //   Catalogue(snapshot.data!.docs[1]),
+          //   WishList(snapshot.data!.docs[2]),
+          //   const AboutUs()
+          // ];
+
         }
 
         return Scaffold(
-          body: Center(
-            child: Text("Loading..."),
+          body: IndexedStack(
+            children: [
+              Center(
+                child: widgetOptions.elementAt(_selectedIndex),
+              ),
+            ],
+          ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const [
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.home, color: Colors.grey), label: 'Home'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite, color: Colors.grey),
+                  label: 'Wishlist'),
+              BottomNavigationBarItem(
+                  icon: Icon(Icons.group, color: Colors.grey),
+                  label: 'About Us'),
+            ],
+            currentIndex: _selectedIndex,
+            onTap: _onItemTap,
           ),
         );
       },

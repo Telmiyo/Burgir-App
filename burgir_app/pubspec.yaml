@@ -40,6 +40,7 @@ dependencies:
   icon_decoration: ^1.0.0+1
   flutter_launcher_icons: ^0.9.2
   url_launcher: ^6.0.18
+  google_fonts: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -72,6 +73,7 @@ flutter:
     - assets/marti.jpeg
     - assets/aitor.jpeg
     - assets/logo.png
+    - assets/background.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

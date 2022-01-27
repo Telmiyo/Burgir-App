@@ -1,3 +1,4 @@
+import 'package:burgir_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'package:url_launcher/link.dart';
@@ -8,16 +9,29 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("About us"),
-      ),
-      body: Column(
-        children: const [
-          Header(),
-          MeetTheTeam(),
-        ],
-      ),
-    );
+        appBar:  appBar: Configurations.instance.CustomAppbar("About Us"),
+        ),
+        body: DecoratedBox(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            children: const [
+              Header(),
+              MeetTheTeam(),
+            ],
+          ),
+        )
+        // body: Column(
+        //   children: const [
+        //     Header(),
+        //     MeetTheTeam(),
+        //   ],
+        // ),
+        );
   }
 }
 
@@ -31,14 +45,8 @@ class Header extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 80, horizontal: 30),
       alignment: Alignment.center,
-      child: const Text(
-        "Meet the team behind",
-        style: TextStyle(
-          fontSize: 40,
-          fontWeight: FontWeight.w600,
-        ),
-        textAlign: TextAlign.center,
-      ),
+      child: Configurations.instance
+          .CustomText("Meet the team behind", TextAlign.center),
     );
   }
 }
