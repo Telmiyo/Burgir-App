@@ -37,10 +37,13 @@ dependencies:
   firebase_core: ^1.11.0
   cloud_firestore: ^3.1.6
 <<<<<<< HEAD
+<<<<<<< HEAD
   decorated_icon: ^1.2.1
 =======
   provider: ^6.0.2
 >>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
+=======
+>>>>>>> parent of 5b554c3 (General Improvements)
 
 dev_dependencies:
   flutter_test:
@@ -65,6 +68,7 @@ flutter:
   uses-material-design: true
 
   # To add assets to your application, add an assets section, like this:
+<<<<<<< HEAD
   assets:
 <<<<<<< HEAD
     - assets/telmo.jpeg
@@ -77,6 +81,11 @@ flutter:
    - assets/telmo.jpeg
    - assets/logo.png
 >>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
+=======
+  # assets:
+  #   - images/a_dot_burr.jpeg
+  #   - images/a_dot_ham.jpeg
+>>>>>>> parent of 5b554c3 (General Improvements)
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

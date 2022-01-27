@@ -56,7 +56,7 @@ class BurgerCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: configurations.mainColor.withAlpha(150),
+        color: Colors.amber[600]!.withAlpha(80),
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
@@ -73,19 +73,14 @@ class BurgerCard extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              margin: const EdgeInsets.fromLTRB(
-                30,
-                30,
-                30,
-                15,
-              ),
+              margin: const EdgeInsets.all(30),
               decoration: BoxDecoration(
-                color: configurations.secondaryColor,
+                color: Colors.grey.withAlpha(120),
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10),
                 ),
               ),
-              height: 140,
+              height: 180,
               width: 180,
 
               //child: Image(
@@ -97,7 +92,7 @@ class BurgerCard extends StatelessWidget {
             Text(
               burger.name,
               style: const TextStyle(
-                fontSize: 18,
+                fontSize: 24,
                 fontWeight: FontWeight.w600,
               ),
             ),

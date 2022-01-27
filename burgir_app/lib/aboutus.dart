@@ -3,20 +3,26 @@ import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
 <<<<<<< HEAD
+<<<<<<< HEAD
   const AboutUs({Key? key}) : super(key: key);
 =======
   final DocumentSnapshot doc;
   const AboutUs(this.doc, {Key? key}) : super(key: key);
 >>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
+=======
+  final dynamic doc;
+  const AboutUs(this.doc, {Key? key}) : super(key: key);
+>>>>>>> parent of 5b554c3 (General Improvements)
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("About us"),
+        title: const Text("About Us"),
       ),
       body: Column(
         children: [
+<<<<<<< HEAD
 <<<<<<< HEAD
           Header(),
           MeetTheTeam(),
@@ -25,6 +31,12 @@ class AboutUs extends StatelessWidget {
             margin: const EdgeInsets.all(20),
             child: Text(
               doc["Desc"].toString(),
+=======
+          Container(
+            margin: const EdgeInsets.all(20),
+            child: Text(
+              doc["AboutUs"],
+>>>>>>> parent of 5b554c3 (General Improvements)
               style: const TextStyle(fontSize: 25),
             ),
           ),
@@ -36,212 +48,156 @@ class AboutUs extends StatelessWidget {
             ],
           ),
           const Description(),
+<<<<<<< HEAD
 >>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
+=======
+>>>>>>> parent of 5b554c3 (General Improvements)
         ],
       ),
     );
   }
 }
 
-class Header extends StatelessWidget {
-  const Header({
+class Description extends StatelessWidget {
+  const Description({
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 80, horizontal: 30),
-      alignment: Alignment.center,
-      child: const Text(
-        "Meet the team behind",
-        style: TextStyle(
-          fontSize: 40,
-          fontWeight: FontWeight.w600,
+    return Expanded(
+      child: Container(
+        margin: const EdgeInsets.fromLTRB(0, 20, 0, 20),
+        width: 100,
+        height: 100,
+        decoration: BoxDecoration(
+          color: Colors.grey.withAlpha(80),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
+          ),
         ),
-        textAlign: TextAlign.center,
+        child: const Text(
+          "This is the description of...",
+          style: TextStyle(fontSize: 20),
+        ),
       ),
     );
   }
 }
 
-class MeetTheTeam extends StatelessWidget {
-  const MeetTheTeam({
+class ProfileImage extends StatelessWidget {
+  const ProfileImage({
     Key? key,
   }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Container(
+        alignment: Alignment.center,
+        margin: const EdgeInsets.fromLTRB(0, 0, 0, 50),
+        width: 400,
+        height: 500,
+        decoration: BoxDecoration(
+          color: Colors.grey.withAlpha(80),
+          borderRadius: const BorderRadius.all(
+            Radius.circular(20),
+          ),
+        ),
+        child: Container(
+          margin: const EdgeInsets.all(25),
+          width: 400,
+          height: 500,
+          decoration: BoxDecoration(
+            color: Colors.black.withAlpha(80),
+            borderRadius: const BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          child: const AnimatedImage(),
+        ),
+      ),
+    );
+  }
+}
+
+class ArrowButton extends StatelessWidget {
+  final IconData icon;
+  const ArrowButton(
+    this.icon, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return InkWell(
+      onTap: () {},
+      child: Icon(
+        icon,
+        color: Colors.grey,
+        size: 50,
+      ),
+    );
+  }
+}
+
+class AnimatedImage extends StatefulWidget {
+  const AnimatedImage({Key? key}) : super(key: key);
+
+  @override
+  _AnimatedImageState createState() => _AnimatedImageState();
+}
+
+class _AnimatedImageState extends State<AnimatedImage> {
+  late double width, height;
+  //late Color color;
+  //late double radius;
+
+  void setMaxValues() {
+    width = 400;
+    height = 400;
+  }
+
+  setMinValues() {
+    width = 380;
+    height = 40;
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setMinValues();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ProfileMiniature(
-              Colors.red,
-              "Aitor",
-              "The engineer",
-              "Des",
-              'assets/aitor.jpeg',
+        SizedBox(
+          width: 400,
+          height: 400,
+          child: Center(
+            child: AnimatedContainer(
+              duration: const Duration(milliseconds: 600),
+              curve: Curves.ease,
+              width: width,
+              height: height,
+              decoration: const BoxDecoration(
+                color: Colors.red,
+                borderRadius: BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
             ),
-            ProfileMiniature(
-              Colors.blue,
-              "Telmo",
-              "The latifundist",
-              "Des",
-              'assets/telmo.jpeg',
-            ),
-          ],
+          ),
         ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            ProfileMiniature(
-              Colors.green,
-              "Marti",
-              "The UI master",
-              "Des",
-              'assets/marti.jpeg',
-            ),
-            ProfileMiniature(
-              Colors.amber,
-              "Marti",
-              "The UI master",
-              "Des",
-              'assets/marti.jpeg',
-            ),
-          ],
+        ElevatedButton(
+          onPressed: () {
+            setState(() => setMaxValues());
+          },
+          child: const Text("New rectangle"),
         ),
       ],
-    );
-  }
-}
-
-class ProfileMiniature extends StatelessWidget {
-  final Color color;
-  final String name;
-  final String alias;
-  final String description;
-  // ignore: prefer_typing_uninitialized_variables
-  final profileImage;
-  const ProfileMiniature(
-    this.color,
-    this.name,
-    this.alias,
-    this.description,
-    this.profileImage, {
-    Key? key,
-  }) : super(key: key);
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.all(15),
-      child: Container(
-        height: 120,
-        width: 120,
-        margin: const EdgeInsets.all(0),
-        padding: const EdgeInsets.all(10),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(100),
-        ),
-        child: InkWell(
-          child: CircleAvatar(
-            backgroundImage: AssetImage(profileImage),
-          ),
-          onTap: () {
-            // ignore: avoid_print
-            print("tapped profile");
-            Navigator.of(context).push(
-              MaterialPageRoute(
-                builder: (context) => DeveloperCard(
-                  color,
-                  name,
-                  alias,
-                  description,
-                  profileImage,
-                ),
-              ),
-            );
-          },
-        ),
-      ),
-    );
-  }
-}
-
-class DeveloperCard extends StatelessWidget {
-  final Color color;
-  final String name;
-  final String alias;
-  final String description;
-  // ignore: prefer_typing_uninitialized_variables
-  final profileImage;
-  const DeveloperCard(
-    this.color,
-    this.name,
-    this.alias,
-    this.description,
-    this.profileImage, {
-    Key? key,
-  }) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("Meet the team"),
-      ),
-      body: Container(
-        alignment: Alignment.center,
-        padding: const EdgeInsets.all(0),
-        margin: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-          color: color,
-          borderRadius: BorderRadius.circular(30),
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            SizedBox(
-              height: 400,
-              width: 300,
-              child: Image(
-                image: AssetImage(profileImage),
-              ),
-            ),
-            Container(
-              child: Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
-            ),
-            Container(
-              child: Text(
-                alias,
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black.withAlpha(100),
-                ),
-              ),
-            ),
-            Container(
-              margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-              child: Text(
-                description,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            )
-          ],
-        ),
-      ),
     );
   }
 }

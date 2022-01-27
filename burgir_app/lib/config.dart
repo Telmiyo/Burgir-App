@@ -8,8 +8,6 @@ class Configurations {
   static const _messagingSenderId = "579724239463";
   static const _appId = "1:579724239463:android:a3beede048fb07df4b6ac2";
   static const Color _mainColor = Colors.amber;
-  static Color _secondaryColor = Colors.grey.shade300;
-  static Color _shadowColor = Colors.grey.shade600;
 
 //Make some getter functions
   String get apiKey => _apiKey;
@@ -19,6 +17,4 @@ class Configurations {
   String get messagingSenderId => _messagingSenderId;
   String get appId => _appId;
   Color get mainColor => _mainColor;
-  Color get secondaryColor => _secondaryColor;
-  Color get shadowColor => _shadowColor;
 }
