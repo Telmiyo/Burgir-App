@@ -15,7 +15,7 @@ class WhatIs extends StatelessWidget {
           Container(
             margin: const EdgeInsets.all(20),
             child: Text(
-              doc["AboutUs"],
+              doc["Desc"],
               style: const TextStyle(fontSize: 25),
             ),
           ),
