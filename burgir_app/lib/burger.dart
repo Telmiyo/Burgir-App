@@ -3,11 +3,13 @@ class Burger {
   // ignore: prefer_typing_uninitialized_variables
   final img;
   final int kcal;
-  final bool wishlist;
+  bool wishlist;
   Burger(
     this.name,
     this.kcal,
     this.img,
     this.wishlist,
   );
+
+  void toggleLiked() => wishlist = !wishlist;
 }

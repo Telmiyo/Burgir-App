@@ -247,11 +247,13 @@ class DeveloperCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 400,
-              width: 300,
-              child: Image(
-                image: AssetImage(profileImage),
+            ClipRRect(
+              borderRadius: BorderRadius.circular(10),
+              child: SizedBox.fromSize(
+                size: const Size.fromRadius(150),
+                child: Image(
+                  image: AssetImage(profileImage),
+                ),
               ),
             ),
             Text(

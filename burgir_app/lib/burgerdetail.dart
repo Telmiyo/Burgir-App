@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'burger.dart';
 import 'catalogue.dart';
-import 'burger.dart';
 
 class BurgerDetails extends StatelessWidget {
   final Burger burger;
@@ -45,7 +44,7 @@ class BurgerDetails extends StatelessWidget {
                   BurgerName(burger: burger),
                   const BurgerDescription(),
                   const BurgerDetailedDescription(),
-                  const LikedButton()
+                  LikedButton(burger)
                 ],
               ),
             ),
@@ -57,28 +56,41 @@ class BurgerDetails extends StatelessWidget {
   }
 }
 
-class LikedButton extends StatelessWidget {
-  const LikedButton({
+class LikedButton extends StatefulWidget {
+  final Burger burger;
+  const LikedButton(
+    this.burger, {
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<LikedButton> createState() => _LikedButtonState();
+}
+
+class _LikedButtonState extends State<LikedButton> {
   @override
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.topRight,
       width: double.infinity,
       margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-      child: DecoratedIcon(
-        Icons.favorite_border,
-        //Icons.favorite,
-        size: 40,
-        color: configurations.mainColor,
-        shadows: [
-          BoxShadow(
-            color: configurations.shadowColor,
-            offset: const Offset(0.0, 3.0),
-          ),
-        ],
+      child: InkWell(
+        onTap: () {
+          setState(() {
+            burgerList[0].toggleLiked();
+          });
+        },
+        child: DecoratedIcon(
+          widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,
+          size: 40,
+          color: configurations.mainColor,
+          shadows: [
+            BoxShadow(
+              color: configurations.shadowColor,
+              offset: const Offset(0.0, 3.0),
+            ),
+          ],
+        ),
       ),
     );
   }
