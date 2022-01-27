@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 
 import 'config.dart';
 
-final configurations = Configurations();
 List<Burger> burgerList = [];
 
 class WishList extends StatelessWidget {
@@ -13,17 +12,20 @@ class WishList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    burgerList.clear();
     AddBurgers(doc);
     return Scaffold(
+        appBar: Configurations.instance.CustomAppbar("WishList"),
         body: Scrollbar(
-      child: GridView.count(
-        childAspectRatio: 2 / 2.2,
-        crossAxisCount: 2,
-        children: [
-          for (int i = 0; i < burgerList.length; i++) BurgerCard(burgerList[i])
-        ],
-      ),
-    ));
+          child: GridView.count(
+            childAspectRatio: 2 / 2.2,
+            crossAxisCount: 2,
+            children: [
+              for (int i = 0; i < burgerList.length; i++)
+                BurgerCard(burgerList[i])
+            ],
+          ),
+        ));
   }
 }
 
@@ -45,7 +47,7 @@ class BurgerCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.all(3),
       decoration: BoxDecoration(
-        color: configurations.mainColor.withAlpha(150),
+        color: Configurations.instance.mainColor.withAlpha(150),
         borderRadius: const BorderRadius.all(
           Radius.circular(10),
         ),
@@ -69,7 +71,7 @@ class BurgerCard extends StatelessWidget {
                 15,
               ),
               decoration: BoxDecoration(
-                color: configurations.secondaryColor,
+                color: Configurations.instance.secondaryColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(10),
                 ),

@@ -1,3 +1,6 @@
+import 'dart:math';
+
+import 'package:burgir_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'burger.dart';
@@ -11,7 +14,7 @@ class BurgerDetails extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: Configurations.instance.CustomAppbar(""),
       body: Column(
         children: [
           Expanded(
@@ -19,7 +22,7 @@ class BurgerDetails extends StatelessWidget {
               width: double.infinity,
               margin: const EdgeInsets.all(40),
               decoration: BoxDecoration(
-                color: configurations.secondaryColor,
+                color: Configurations.instance.secondaryColor,
                 borderRadius: const BorderRadius.all(
                   Radius.circular(20),
                 ),
@@ -32,7 +35,7 @@ class BurgerDetails extends StatelessWidget {
                     child: Container(
                       margin: const EdgeInsets.fromLTRB(30, 50, 30, 10),
                       decoration: BoxDecoration(
-                        color: configurations.mainColor,
+                        color: Configurations.instance.mainColor,
                         borderRadius: const BorderRadius.all(
                           Radius.circular(20),
                         ),
@@ -49,7 +52,7 @@ class BurgerDetails extends StatelessWidget {
               ),
             ),
           ),
-          const BottomBar(),
+          BottomBar(burger),
         ],
       ),
     );
@@ -83,10 +86,10 @@ class _LikedButtonState extends State<LikedButton> {
         child: DecoratedIcon(
           widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,
           size: 40,
-          color: configurations.mainColor,
+          color: Configurations.instance.mainColor,
           shadows: [
             BoxShadow(
-              color: configurations.shadowColor,
+              color: Configurations.instance.shadowColor,
               offset: const Offset(0.0, 3.0),
             ),
           ],
@@ -155,8 +158,11 @@ class BurgerName extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class BottomBar extends StatelessWidget {
-  const BottomBar({
+  Burger burgerAt;
+  BottomBar(
+    this.burgerAt, {
     Key? key,
   }) : super(key: key);
 
@@ -168,17 +174,17 @@ class BottomBar extends StatelessWidget {
       margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
       //padding: EdgeInsets.symmetric(vertical: 0, horizontal: 30),
       decoration: BoxDecoration(
-        color: configurations.secondaryColor,
+        color: Configurations.instance.secondaryColor,
         borderRadius: const BorderRadius.all(
           Radius.circular(30),
         ),
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
-        children: const [
-          BarButton(Icons.arrow_left, previousBurger),
-          BarButton(Icons.shuffle, randomBurger),
-          BarButton(Icons.arrow_right, nextBurger),
+        children: [
+          BarButton(Icons.arrow_left, previousBurger, burgerAt),
+          BarButton(Icons.shuffle, randomBurger, burgerAt),
+          BarButton(Icons.arrow_right, nextBurger, burgerAt),
         ],
       ),
     );
@@ -187,10 +193,12 @@ class BottomBar extends StatelessWidget {
 
 class BarButton extends StatelessWidget {
   final IconData icon;
-  final void Function() method;
+  final Burger burgerAt;
+  final void Function(BuildContext context, Burger burgerAt) method;
   const BarButton(
     this.icon,
-    this.method, {
+    this.method,
+    this.burgerAt, {
     Key? key,
   }) : super(key: key);
 
@@ -201,16 +209,16 @@ class BarButton extends StatelessWidget {
         alignment: Alignment.center,
         child: InkWell(
           onTap: () {
-            method();
+            method(context, burgerAt);
           },
           hoverColor: Colors.red,
           child: DecoratedIcon(
             icon,
-            color: configurations.mainColor,
+            color: Configurations.instance.mainColor,
             size: 45,
             shadows: [
               BoxShadow(
-                color: configurations.shadowColor,
+                color: Configurations.instance.shadowColor,
                 offset: const Offset(0.0, 3.0),
               ),
             ],
@@ -221,21 +229,32 @@ class BarButton extends StatelessWidget {
   }
 }
 
-void nextBurger() {
+void nextBurger(BuildContext context, Burger burgerAt) {
   debugPrint("Next burger");
-  //Navigator.of(context).push(
-  //  MaterialPageRoute(
-  //    builder: (context) => BurgerDetails(burgerList[3]),
-  //  ),
-  //);
+  for (int i = 0; i < burgerList.length; ++i) {
+    if (burgerList[i] == burgerAt && i + 1 < burgerList.length) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => BurgerDetails(burgerList[i + 1]),
+      ));
+    }
+  }
 }
 
-void previousBurger() {
+void previousBurger(BuildContext context, Burger burgerAt) {
   debugPrint("Previous burger");
+  for (int i = 0; i < burgerList.length; ++i) {
+    if (burgerList[i] == burgerAt && i - 1 > 0) {
+      Navigator.of(context).push(MaterialPageRoute(
+        builder: (context) => BurgerDetails(burgerList[i - 1]),
+      ));
+    }
+  }
 }
 
-void randomBurger() {
+void randomBurger(BuildContext context, Burger burgerAt) {
   debugPrint("Random burger");
-  //Random random = Random();
-  //int randomNumber = random.nextInt(burgerList.length);
+  int n = Random().nextInt(burgerList.length);
+  Navigator.of(context).push(MaterialPageRoute(
+    builder: (context) => BurgerDetails(burgerList[n]),
+  ));
 }

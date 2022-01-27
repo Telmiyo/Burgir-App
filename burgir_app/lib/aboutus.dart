@@ -1,3 +1,4 @@
+import 'package:burgir_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'package:url_launcher/link.dart';
@@ -8,8 +9,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("About us"),
+        appBar:  appBar: Configurations.instance.CustomAppbar("About Us"),
         ),
         body: DecoratedBox(
           decoration: const BoxDecoration(
@@ -45,14 +45,8 @@ class Header extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(vertical: 80, horizontal: 30),
       alignment: Alignment.center,
-      child: const Text(
-        "Meet the team behind",
-        style: TextStyle(
-          fontSize: 40,
-          fontWeight: FontWeight.w600,
-        ),
-        textAlign: TextAlign.center,
-      ),
+      child: Configurations.instance
+          .CustomText("Meet the team behind", TextAlign.center),
     );
   }
 }
@@ -261,13 +255,11 @@ class DeveloperCard extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            ClipRRect(
-              borderRadius: BorderRadius.circular(10),
-              child: SizedBox.fromSize(
-                size: const Size.fromRadius(150),
-                child: Image(
-                  image: AssetImage(profileImage),
-                ),
+            SizedBox(
+              height: 400,
+              width: 300,
+              child: Image(
+                image: AssetImage(profileImage),
               ),
             ),
             Text(
