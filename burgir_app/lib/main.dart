@@ -77,8 +77,8 @@ class _NavigationState extends State<Navigation> {
               BottomNavigationBarItem(
                   icon: Icon(Icons.home, color: Colors.grey), label: 'Home'),
               BottomNavigationBarItem(
-                  icon: Icon(Icons.shopping_cart, color: Colors.grey),
-                  label: 'Shopping Cart'),
+                  icon: Icon(Icons.favorite, color: Colors.grey),
+                  label: 'Wishlist'),
               BottomNavigationBarItem(
                   icon: Icon(Icons.person, color: Colors.grey),
                   label: 'Account'),
