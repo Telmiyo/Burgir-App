@@ -186,23 +186,19 @@ class DeveloperCard extends StatelessWidget {
                 image: AssetImage(profileImage),
               ),
             ),
-            Container(
-              child: Text(
-                name,
-                style: const TextStyle(
-                  fontSize: 40,
-                  fontWeight: FontWeight.w600,
-                ),
+            Text(
+              name,
+              style: const TextStyle(
+                fontSize: 40,
+                fontWeight: FontWeight.w600,
               ),
             ),
-            Container(
-              child: Text(
-                alias,
-                style: TextStyle(
-                  fontSize: 25,
-                  fontWeight: FontWeight.w400,
-                  color: Colors.black.withAlpha(100),
-                ),
+            Text(
+              alias,
+              style: TextStyle(
+                fontSize: 25,
+                fontWeight: FontWeight.w400,
+                color: Colors.black.withAlpha(100),
               ),
             ),
             Container(

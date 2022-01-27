@@ -14,19 +14,15 @@ class Catalogue extends StatelessWidget {
   Widget build(BuildContext context) {
     AddBurgers(doc);
     return Scaffold(
-        appBar: AppBar(
-          title: const Text("Catalogue", style: TextStyle(fontSize: 30)),
-        ),
         body: Scrollbar(
-          child: GridView.count(
-            childAspectRatio: 2 / 2.2,
-            crossAxisCount: 2,
-            children: [
-              for (int i = 0; i < burgerList.length; i++)
-                BurgerCard(burgerList[i])
-            ],
-          ),
-        ));
+      child: GridView.count(
+        childAspectRatio: 2 / 2.2,
+        crossAxisCount: 2,
+        children: [
+          for (int i = 0; i < burgerList.length; i++) BurgerCard(burgerList[i])
+        ],
+      ),
+    ));
   }
 }
 

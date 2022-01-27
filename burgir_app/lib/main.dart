@@ -55,7 +55,7 @@ class _NavigationState extends State<Navigation> {
       future: burgers.get(),
       builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
         if (!snapshot.hasData) {
-          return const Center(child: CircularProgressIndicator());
+          return const Center(child: LogoAnimation());
         }
         if (snapshot.hasData) {
           widgetOptions = [
