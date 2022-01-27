@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'burgerdetail.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +7,7 @@ final configurations = Configurations();
 List<Burger> burgerList = [];
 
 class Catalogue extends StatelessWidget {
-  final DocumentSnapshot doc;
+  final dynamic doc;
   const Catalogue(this.doc, {Key? key}) : super(key: key);
 
   @override
@@ -33,8 +31,8 @@ class Catalogue extends StatelessWidget {
 }
 
 // ignore: non_constant_identifier_names
-void AddBurgers(DocumentSnapshot doc) {
-  burgerList.add(Burger(doc["Burger1"].toString(), 1, 1));
+void AddBurgers(dynamic doc) {
+  burgerList.add(Burger("Burger #1", 1, 1));
   burgerList.add(Burger("Burger #2", 1, 1));
   burgerList.add(Burger("Burger #3", 1, 1));
   burgerList.add(Burger("Burger #4", 1, 1));

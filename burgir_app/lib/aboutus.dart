@@ -1,13 +1,7 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 class AboutUs extends StatelessWidget {
-<<<<<<< HEAD
   const AboutUs({Key? key}) : super(key: key);
-=======
-  final DocumentSnapshot doc;
-  const AboutUs(this.doc, {Key? key}) : super(key: key);
->>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
 
   @override
   Widget build(BuildContext context) {
@@ -17,26 +11,8 @@ class AboutUs extends StatelessWidget {
       ),
       body: Column(
         children: [
-<<<<<<< HEAD
           Header(),
           MeetTheTeam(),
-=======
-          Container(
-            margin: const EdgeInsets.all(20),
-            child: Text(
-              doc["Desc"].toString(),
-              style: const TextStyle(fontSize: 25),
-            ),
-          ),
-          Row(
-            children: const [
-              ArrowButton(Icons.arrow_left),
-              ProfileImage(),
-              ArrowButton(Icons.arrow_right)
-            ],
-          ),
-          const Description(),
->>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
         ],
       ),
     );
