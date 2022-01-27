@@ -36,7 +36,11 @@ dependencies:
   cupertino_icons: ^1.0.2
   firebase_core: ^1.11.0
   cloud_firestore: ^3.1.6
+<<<<<<< HEAD
   decorated_icon: ^1.2.1
+=======
+  provider: ^6.0.2
+>>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
 
 dev_dependencies:
   flutter_test:
@@ -62,10 +66,17 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
+<<<<<<< HEAD
     - assets/telmo.jpeg
     - assets/marti.jpeg
     - assets/aitor.jpeg
     - assets/logo.png
+=======
+   - assets/marti.jpeg
+   - assets/aitor.jpeg
+   - assets/telmo.jpeg
+   - assets/logo.png
+>>>>>>> 81a6f1b6e1f3f5280b166107a189644ff7c16e0b
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
