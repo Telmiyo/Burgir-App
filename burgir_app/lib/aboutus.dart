@@ -8,16 +8,30 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("About us"),
-      ),
-      body: Column(
-        children: const [
-          Header(),
-          MeetTheTeam(),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          title: const Text("About us"),
+        ),
+        body: DecoratedBox(
+          decoration: const BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/background.png'),
+              fit: BoxFit.cover,
+            ),
+          ),
+          child: Column(
+            children: const [
+              Header(),
+              MeetTheTeam(),
+            ],
+          ),
+        )
+        // body: Column(
+        //   children: const [
+        //     Header(),
+        //     MeetTheTeam(),
+        //   ],
+        // ),
+        );
   }
 }
 
