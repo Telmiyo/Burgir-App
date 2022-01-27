@@ -29,8 +29,8 @@ class WishList extends StatelessWidget {
 
 // ignore: non_constant_identifier_names
 void AddBurgers(dynamic doc) {
-  burgerList.add(Burger(doc['Burger1'], 1, 1, true));
-  burgerList.add(Burger("Burger #2", 1, 1, true));
+  // burgerList.add(Burger(doc['Burger1'], 1, 1, true));
+  // burgerList.add(Burger("Burger #2", 1, 1, true));
 }
 
 class BurgerCard extends StatelessWidget {
@@ -76,12 +76,6 @@ class BurgerCard extends StatelessWidget {
               ),
               height: 140,
               width: 180,
-
-              //child: Image(
-              //image: NetworkImage(
-              //"https://github.com/MartiDavicino/Flutter-App_Mobile-Devices/blob/main/App%20prototype/app_prototype/assets/1.png"),
-              //image: AssetImage("assets/" + img.toString() + "png"),
-              //),
             ),
             Text(
               burger.name,
