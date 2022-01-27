@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:decorated_icon/decorated_icon.dart';
+import 'package:url_launcher/link.dart';
 
 class AboutUs extends StatelessWidget {
   const AboutUs({Key? key}) : super(key: key);
@@ -79,12 +81,8 @@ class MeetTheTeam extends StatelessWidget {
               "Des",
               'assets/marti.jpeg',
             ),
-            ProfileMiniature(
+            WorkWithUsMiniature(
               Colors.amber,
-              "Marti",
-              "The UI master",
-              "Des",
-              'assets/marti.jpeg',
             ),
           ],
         ),
@@ -137,6 +135,76 @@ class ProfileMiniature extends StatelessWidget {
                   description,
                   profileImage,
                 ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+}
+
+class WorkWithUsMiniature extends StatelessWidget {
+  final Color color;
+  const WorkWithUsMiniature(
+    this.color, {
+    Key? key,
+  }) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(15),
+      child: Container(
+        alignment: Alignment.center,
+        height: 120,
+        width: 120,
+        margin: const EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
+        decoration: BoxDecoration(
+          color: color,
+          borderRadius: BorderRadius.circular(100),
+        ),
+        child: InkWell(
+          child: Container(
+            alignment: Alignment.center,
+            height: 100,
+            width: 100,
+            decoration: BoxDecoration(
+              color: Colors.grey.withAlpha(100),
+              borderRadius: BorderRadius.circular(100),
+            ),
+            child: const DecoratedIcon(
+              Icons.add,
+              size: 70,
+              color: Colors.black,
+              shadows: [
+                BoxShadow(
+                  color: Colors.grey,
+                  offset: Offset(0.0, 3.0),
+                ),
+              ],
+            ),
+          ),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: const Text('Burger Buddies is recruiting!'),
+                content: const Text('Do you want to join the team?'),
+                actions: <Widget>[
+                  Link(
+                    uri: Uri.parse(
+                        'https://www.instagram.com/burgerbuddiesnft/?hl=es'),
+                    builder: (context, followLink) => ElevatedButton(
+                      onPressed: followLink,
+                      child: const Text('Contact with us!'),
+                    ),
+                  ),
+                  ElevatedButton(
+                    child: const Text('Not sure...'),
+                    onPressed: () {},
+                  ),
+                ],
               ),
             );
           },
