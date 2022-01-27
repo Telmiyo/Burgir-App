@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+import 'package:decorated_icon/decorated_icon.dart';
 import 'catalogue.dart';
 
 class BurgerDetails extends StatelessWidget {
@@ -17,7 +17,7 @@ class BurgerDetails extends StatelessWidget {
             width: double.infinity,
             margin: const EdgeInsets.all(40),
             decoration: BoxDecoration(
-              color: Colors.grey.withAlpha(80),
+              color: configurations.secondaryColor,
               borderRadius: const BorderRadius.all(
                 Radius.circular(20),
               ),
@@ -31,59 +31,136 @@ class BurgerDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                     color: configurations.mainColor,
                     borderRadius: const BorderRadius.all(
-                      Radius.circular(50),
+                      Radius.circular(20),
                     ),
                   ),
-                  height: 520,
-                  width: 500,
+                  height: 250,
+                  width: 250,
                 ),
-                Container(
-                  margin: const EdgeInsets.all(0),
-                  child: Text(burger.name,
-                      style: const TextStyle(
-                        fontSize: 35,
-                        fontWeight: FontWeight.w600,
-                      )),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  child: const Text("Burger description",
-                      style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.w300,
-                      )),
-                ),
-                Container(
-                  margin: const EdgeInsets.all(10),
-                  child: const Text(
-                    "More Burger description",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontWeight: FontWeight.w300,
-                    ),
-                  ),
-                ),
+                BurgerName(burger: burger),
+                BurgerDescription(),
+                BurgerDetailedDescription(),
+                LikedButton()
               ],
             ),
           ),
-          Container(
-            width: double.infinity,
-            height: 100,
-            margin: const EdgeInsets.fromLTRB(40, 110, 40, 10),
-            decoration: BoxDecoration(
-              color: configurations.mainColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(30),
-              ),
-            ),
-            child: Row(
-              children: const [
-                BarButton(Icons.arrow_left, previousBurger),
-                BarButton(Icons.shuffle, randomBurger),
-                BarButton(Icons.arrow_right, nextBurger),
-              ],
-            ),
+          BottomBar(),
+        ],
+      ),
+    );
+  }
+}
+
+class LikedButton extends StatelessWidget {
+  const LikedButton({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      alignment: Alignment.topRight,
+      width: double.infinity,
+      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+      child: DecoratedIcon(
+        Icons.favorite_border,
+        //Icons.favorite,
+        size: 40,
+        color: configurations.mainColor,
+        shadows: [
+          BoxShadow(
+            color: configurations.shadowColor,
+            offset: const Offset(0.0, 3.0),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class BurgerDetailedDescription extends StatelessWidget {
+  const BurgerDetailedDescription({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: const Text(
+        "More Burger description",
+        style: TextStyle(
+          fontSize: 25,
+          fontWeight: FontWeight.w300,
+        ),
+      ),
+    );
+  }
+}
+
+class BurgerDescription extends StatelessWidget {
+  const BurgerDescription({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(10),
+      child: const Text("Burger description",
+          style: TextStyle(
+            fontSize: 25,
+            fontWeight: FontWeight.w300,
+          )),
+    );
+  }
+}
+
+class BurgerName extends StatelessWidget {
+  const BurgerName({
+    Key? key,
+    required this.burger,
+  }) : super(key: key);
+
+  final Burger burger;
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(0),
+      child: Text(burger.name,
+          style: const TextStyle(
+            fontSize: 35,
+            fontWeight: FontWeight.w600,
+          )),
+    );
+  }
+}
+
+class BottomBar extends StatelessWidget {
+  const BottomBar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      height: 100,
+      margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+      //padding: EdgeInsets.symmetric(vertical: 0, horizontal: 30),
+      decoration: BoxDecoration(
+        color: configurations.secondaryColor,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(30),
+        ),
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          BarButton(Icons.arrow_left, previousBurger),
+          BarButton(Icons.shuffle, randomBurger),
+          BarButton(Icons.arrow_right, nextBurger),
         ],
       ),
     );
@@ -102,12 +179,25 @@ class BarButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: InkWell(
-        onTap: () {
-          method();
-        },
-        hoverColor: Colors.red,
-        child: Icon(icon, color: Colors.black, size: 45),
+      child: Container(
+        alignment: Alignment.center,
+        child: InkWell(
+          onTap: () {
+            method();
+          },
+          hoverColor: Colors.red,
+          child: DecoratedIcon(
+            icon,
+            color: configurations.mainColor,
+            size: 45,
+            shadows: [
+              BoxShadow(
+                color: configurations.shadowColor,
+                offset: const Offset(0.0, 3.0),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

@@ -1,6 +1,6 @@
 import 'catalogue.dart';
+import 'whatis.dart';
 import 'aboutus.dart';
-import 'newaboutus.dart';
 import 'package:flutter/material.dart';
 import 'config.dart';
 
@@ -20,13 +20,13 @@ class HomePage extends StatelessWidget {
         alignment: Alignment.center,
         child: Column(
           children: [
-            const Header("Burger Collection"),
-            HomePageButton("About Us",
-                MaterialPageRoute(builder: (context) => AboutUs(doc))),
-            HomePageButton("New About Us",
-                MaterialPageRoute(builder: (context) => const NewAboutUs())),
+            const Header("Burger Buddies  Collection"),
+            HomePageButton("What is Burger Buddies?",
+                MaterialPageRoute(builder: (context) => WhatIs(doc))),
             HomePageButton("Catalogue",
                 MaterialPageRoute(builder: (context) => Catalogue(doc))),
+            HomePageButton("About Us",
+                MaterialPageRoute(builder: (context) => const AboutUs())),
           ],
         ),
       ),
@@ -48,7 +48,10 @@ class HomePageButton extends StatelessWidget {
     return Container(
       height: 60,
       width: 200,
-      margin: const EdgeInsets.fromLTRB(0, 60, 0, 60),
+      margin: const EdgeInsets.symmetric(
+        vertical: 30,
+        horizontal: 60,
+      ),
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
           primary: configurations.mainColor,
@@ -78,10 +81,12 @@ class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.fromLTRB(0, 70, 0, 90),
+      margin: const EdgeInsets.symmetric(vertical: 35, horizontal: 60),
+      alignment: Alignment.center,
       child: Text(
         text,
         style: const TextStyle(fontSize: 50, fontWeight: FontWeight.w700),
+        textAlign: TextAlign.center,
       ),
     );
   }
