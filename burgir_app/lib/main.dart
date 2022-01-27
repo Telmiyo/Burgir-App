@@ -60,7 +60,7 @@ class _NavigationState extends State<Navigation> {
         if (snapshot.hasData) {
           widgetOptions = [
             Catalogue(snapshot.data!.docs[1]),
-            WhatIs(snapshot.data!.docs[0]),
+            WishList(snapshot.data!.docs[0]),
             const AboutUs()
           ];
         }

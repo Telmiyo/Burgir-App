@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'catalogue.dart';
+import 'burger.dart';
 
 class BurgerDetails extends StatelessWidget {
   final Burger burger;
