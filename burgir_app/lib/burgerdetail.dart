@@ -13,35 +13,39 @@ class BurgerDetails extends StatelessWidget {
       appBar: AppBar(),
       body: Column(
         children: [
-          Container(
-            width: double.infinity,
-            margin: const EdgeInsets.all(40),
-            decoration: BoxDecoration(
-              color: configurations.secondaryColor,
-              borderRadius: const BorderRadius.all(
-                Radius.circular(20),
+          Expanded(
+            child: Container(
+              width: double.infinity,
+              margin: const EdgeInsets.all(40),
+              decoration: BoxDecoration(
+                color: configurations.secondaryColor,
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(20),
+                ),
               ),
-            ),
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  margin: const EdgeInsets.fromLTRB(30, 50, 30, 10),
-                  decoration: BoxDecoration(
-                    color: configurations.mainColor,
-                    borderRadius: const BorderRadius.all(
-                      Radius.circular(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Expanded(
+                    child: Container(
+                      margin: const EdgeInsets.fromLTRB(30, 50, 30, 10),
+                      decoration: BoxDecoration(
+                        color: configurations.mainColor,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      height: 250,
+                      width: 250,
                     ),
                   ),
-                  height: 250,
-                  width: 250,
-                ),
-                BurgerName(burger: burger),
-                const BurgerDescription(),
-                const BurgerDetailedDescription(),
-                const LikedButton()
-              ],
+                  BurgerName(burger: burger),
+                  const BurgerDescription(),
+                  const BurgerDetailedDescription(),
+                  const LikedButton()
+                ],
+              ),
             ),
           ),
           const BottomBar(),

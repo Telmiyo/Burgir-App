@@ -1,3 +1,4 @@
+import 'burger.dart';
 import 'burgerdetail.dart';
 import 'package:flutter/material.dart';
 
@@ -28,14 +29,8 @@ class Catalogue extends StatelessWidget {
 
 // ignore: non_constant_identifier_names
 void AddBurgers(dynamic doc) {
-  burgerList.add(Burger("Burger #1", 1, 1));
-  burgerList.add(Burger("Burger #2", 1, 1));
-  burgerList.add(Burger("Burger #3", 1, 1));
-  burgerList.add(Burger("Burger #4", 1, 1));
-  burgerList.add(Burger("Burger #5", 1, 1));
-  burgerList.add(Burger("Burger #6", 1, 1));
-  burgerList.add(Burger("Burger #7", 1, 1));
-  burgerList.add(Burger("Burger #8", 1, 1));
+  burgerList.add(Burger("Burger #1", 1, 1, false));
+  burgerList.add(Burger("Burger #2", 1, 1, false));
 }
 
 class BurgerCard extends StatelessWidget {
@@ -65,28 +60,26 @@ class BurgerCard extends StatelessWidget {
           );
         },
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Container(
-              margin: const EdgeInsets.fromLTRB(
-                30,
-                30,
-                30,
-                15,
-              ),
-              decoration: BoxDecoration(
-                color: configurations.secondaryColor,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10),
+            Expanded(
+              child: Container(
+                margin: const EdgeInsets.fromLTRB(
+                  30,
+                  30,
+                  30,
+                  15,
                 ),
+                decoration: BoxDecoration(
+                  color: configurations.secondaryColor,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                height: 140,
+                width: 180,
               ),
-              height: 140,
-              width: 180,
-
-              //child: Image(
-              //image: NetworkImage(
-              //"https://github.com/MartiDavicino/Flutter-App_Mobile-Devices/blob/main/App%20prototype/app_prototype/assets/1.png"),
-              //image: AssetImage("assets/" + img.toString() + "png"),
-              //),
             ),
             Text(
               burger.name,
@@ -100,16 +93,4 @@ class BurgerCard extends StatelessWidget {
       ),
     );
   }
-}
-
-class Burger {
-  final String name;
-  // ignore: prefer_typing_uninitialized_variables
-  final img;
-  final int kcal;
-  Burger(
-    this.name,
-    this.kcal,
-    this.img,
-  );
 }
