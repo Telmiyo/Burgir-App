@@ -10,7 +10,7 @@ class AboutUs extends StatelessWidget {
         title: const Text("About us"),
       ),
       body: Column(
-        children: [
+        children: const [
           Header(),
           MeetTheTeam(),
         ],
@@ -52,7 +52,7 @@ class MeetTheTeam extends StatelessWidget {
       children: [
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             ProfileMiniature(
               Colors.red,
               "Aitor",
@@ -71,7 +71,7 @@ class MeetTheTeam extends StatelessWidget {
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          children: [
+          children: const [
             ProfileMiniature(
               Colors.green,
               "Marti",
@@ -166,7 +166,7 @@ class DeveloperCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Meet the team"),
+        title: const Text("Meet the team"),
       ),
       body: Container(
         alignment: Alignment.center,

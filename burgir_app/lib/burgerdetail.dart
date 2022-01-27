@@ -38,13 +38,13 @@ class BurgerDetails extends StatelessWidget {
                   width: 250,
                 ),
                 BurgerName(burger: burger),
-                BurgerDescription(),
-                BurgerDetailedDescription(),
-                LikedButton()
+                const BurgerDescription(),
+                const BurgerDetailedDescription(),
+                const LikedButton()
               ],
             ),
           ),
-          BottomBar(),
+          const BottomBar(),
         ],
       ),
     );
