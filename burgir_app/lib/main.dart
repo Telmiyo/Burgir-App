@@ -63,7 +63,7 @@ class _NavigationState extends State<Navigation> {
               builder: (BuildContext context,
                   AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 widgetOptions = [
-                  Catalogue(snapshot.data?.docs[1]),
+                  Catalogue(snapshot.data!.docs[1]),
                   //WhatIs(snapshot.data?.docs[0]),
                   const AboutUs()
                 ];
@@ -92,13 +92,6 @@ class _NavigationState extends State<Navigation> {
                   ),
                 );
               });
-
-          // widgetOptions = [
-          //   Catalogue(snapshot.data!.docs[1]),
-          //   WishList(snapshot.data!.docs[2]),
-          //   const AboutUs()
-          // ];
-
         }
 
         return Scaffold(

@@ -9,8 +9,7 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:  appBar: Configurations.instance.CustomAppbar("About Us"),
-        ),
+        appBar: Configurations.instance.CustomAppbar("About Us"),
         body: DecoratedBox(
           decoration: const BoxDecoration(
             image: DecorationImage(
