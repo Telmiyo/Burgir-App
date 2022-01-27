@@ -39,8 +39,8 @@ class Navigation extends StatefulWidget {
 }
 
 class _NavigationState extends State<Navigation> {
-  CollectionReference burgers =
-      FirebaseFirestore.instance.collection('Burgers');
+  final Future<FirebaseApp> init = Firebase.initializeApp();
+  final burgers = FirebaseFirestore.instance.collection('Burgers');
   int _selectedIndex = 0;
   late List<Widget> widgetOptions;
   void _onItemTap(int index) {
@@ -51,40 +51,52 @@ class _NavigationState extends State<Navigation> {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<QuerySnapshot>(
-      future: burgers.get(),
-      builder: (BuildContext context, AsyncSnapshot<QuerySnapshot> snapshot) {
+    return FutureBuilder(
+      future: init,
+      builder: (context, snapshot) {
         if (!snapshot.hasData) {
           return const Center(child: LogoAnimation());
         }
         if (snapshot.hasData) {
-          widgetOptions = [
-            Catalogue(snapshot.data!.docs[1]),
-            WhatIs(snapshot.data!.docs[0]),
-            const AboutUs()
-          ];
+          return StreamBuilder(
+              stream: burgers.snapshots(),
+              builder: (BuildContext context,
+                  AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+                widgetOptions = [
+                  Catalogue(snapshot.data?.docs[1]),
+                  WhatIs(snapshot.data?.docs[0]),
+                  const AboutUs()
+                ];
+                return Scaffold(
+                  body: IndexedStack(
+                    children: [
+                      Center(
+                        child: widgetOptions.elementAt(_selectedIndex),
+                      ),
+                    ],
+                  ),
+                  bottomNavigationBar: BottomNavigationBar(
+                    items: const [
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.home, color: Colors.grey),
+                          label: 'Home'),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.favorite, color: Colors.grey),
+                          label: 'Wishlist'),
+                      BottomNavigationBarItem(
+                          icon: Icon(Icons.person, color: Colors.grey),
+                          label: 'Account'),
+                    ],
+                    currentIndex: _selectedIndex,
+                    onTap: _onItemTap,
+                  ),
+                );
+              });
         }
+
         return Scaffold(
-          body: IndexedStack(
-            children: [
-              Center(
-                child: widgetOptions.elementAt(_selectedIndex),
-              ),
-            ],
-          ),
-          bottomNavigationBar: BottomNavigationBar(
-            items: const [
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.home, color: Colors.grey), label: 'Home'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite, color: Colors.grey),
-                  label: 'Wishlist'),
-              BottomNavigationBarItem(
-                  icon: Icon(Icons.person, color: Colors.grey),
-                  label: 'Account'),
-            ],
-            currentIndex: _selectedIndex,
-            onTap: _onItemTap,
+          body: Center(
+            child: Text("Loading..."),
           ),
         );
       },

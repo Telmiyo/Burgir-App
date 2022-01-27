@@ -1,3 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_core/firebase_core.dart';
+
 import 'burgerdetail.dart';
 import 'package:flutter/material.dart';
 
@@ -8,22 +11,60 @@ List<Burger> burgerList = [];
 
 class Catalogue extends StatelessWidget {
   final dynamic doc;
-  const Catalogue(this.doc, {Key? key}) : super(key: key);
+  Catalogue(this.doc, {Key? key}) : super(key: key);
+  final col = FirebaseFirestore.instance.collection("Borgirs");
+  dynamic borgirs;
 
   @override
   Widget build(BuildContext context) {
-    AddBurgers(doc);
     return Scaffold(
-        body: Scrollbar(
-      child: GridView.count(
-        childAspectRatio: 2 / 2.2,
-        crossAxisCount: 2,
-        children: [
-          for (int i = 0; i < burgerList.length; i++) BurgerCard(burgerList[i])
-        ],
+      body: StreamBuilder(
+        stream: col.snapshots(),
+        builder: (BuildContext context,
+            AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+          if (!snapshot.hasData) {
+            return const Center(child: CircularProgressIndicator());
+          }
+          if (snapshot.hasData) {
+            dynamic d = snapshot.data!.docs.length;
+            return Scrollbar(
+              child: ListView.builder(
+                shrinkWrap: true,
+                itemCount: snapshot.data!.docs.length,
+                itemBuilder: (BuildContext context, index) {
+                  borgirs = snapshot.data!.docs[index];
+                  String name = borgirs["name"];
+                  return GridView.count(
+                      childAspectRatio: 2 / 2.2,
+                      crossAxisCount: 2,
+                      shrinkWrap: true,
+                      children: [
+                        for (int i = 0; i < burgerList.length; i++)
+                          BurgerCard(burgerList[i])
+                      ]);
+                },
+              ),
+            );
+          } else {
+            return const Center(child: Text("doc is null!"));
+          }
+        },
       ),
-    ));
+    );
   }
+  //AddBurgers(doc);
+  // return Scaffold(
+  //     body: Scrollbar(
+  //   child: GridView.count(
+  //     childAspectRatio: 2 / 2.2,
+  //     crossAxisCount: 2,
+  //     shrinkWrap: true,
+  //     children: [
+  //       //for (int i = 0; i < burgerList.length; i++) BurgerCard(burgerList[i])
+  //     ],
+  //   ),
+  // ));
+
 }
 
 // ignore: non_constant_identifier_names
