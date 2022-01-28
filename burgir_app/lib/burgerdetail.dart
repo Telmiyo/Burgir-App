@@ -269,8 +269,7 @@ class _LikedButtonState extends State<LikedButton> {
                   debugPrint("clicked");
                   if (burgir.wishlist == false) {
                     ber.doc(burgir.bref).update({'wishlist': true});
-                  }
-                  if (burgir.wishlist == true) {
+                  } else {
                     ber.doc(burgir.bref).update({'wishlist': false});
                   }
                 },

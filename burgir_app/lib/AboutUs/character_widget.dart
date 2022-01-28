@@ -6,7 +6,7 @@ import 'character_detail_screen.dart';
 
 class CharacterWidget extends StatelessWidget {
   final Character character;
-  final dynamic doc;
+  final doc;
   const CharacterWidget({Key? key, required this.character, this.doc})
       : super(key: key);
 
