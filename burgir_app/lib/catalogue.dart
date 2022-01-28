@@ -37,8 +37,7 @@ class Catalogue extends StatelessWidget {
                   mainAxisSpacing: 15,
                   maxCrossAxisExtent: 200,
                 ),
-                //itemCount: snapshot.data!.docs.length,
-                itemCount: 8,
+                itemCount: snapshot.data!.docs.length,
                 itemBuilder: (
                   BuildContext context,
                   index,
