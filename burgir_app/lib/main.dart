@@ -64,8 +64,7 @@ class _NavigationState extends State<Navigation> {
                   AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
                 widgetOptions = [
                   Catalogue(snapshot.data?.docs[1]),
-                  //WhatIs(snapshot.data?.docs[0]),
-                  const AboutUs()
+                  AboutUs(snapshot.data?.docs[0]),
                 ];
                 return Scaffold(
                   body: IndexedStack(

@@ -4,7 +4,8 @@ import 'package:decorated_icon/decorated_icon.dart';
 import 'package:url_launcher/link.dart';
 
 class AboutUs extends StatelessWidget {
-  const AboutUs({Key? key}) : super(key: key);
+  final dynamic doc;
+  const AboutUs(this.doc, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

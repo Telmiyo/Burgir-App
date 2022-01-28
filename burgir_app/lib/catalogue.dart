@@ -29,24 +29,30 @@ class Catalogue extends StatelessWidget {
           }
           if (snapshot.hasData) {
             dynamic d = snapshot.data!.docs.length;
-            return Scrollbar(
-              child: ListView.builder(
-                shrinkWrap: true,
-                itemCount: snapshot.data!.docs.length,
-                itemBuilder: (BuildContext context, index) {
+            return Scaffold(
+              body: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                  childAspectRatio: 1 / 1,
+                  crossAxisSpacing: 30,
+                  mainAxisSpacing: 20,
+                  maxCrossAxisExtent: 200,
+                ),
+                //itemCount: snapshot.data!.docs.length,
+                itemCount: 8,
+                itemBuilder: (
+                  BuildContext context,
+                  index,
+                ) {
                   borgirs = snapshot.data!.docs[index];
-                  return GridView.count(
-                      childAspectRatio: 2 / 2.2,
-                      crossAxisCount: 2,
-                      shrinkWrap: true,
-                      children: [
-                        BurgerCard(Burger(
-                            borgirs["name"],
-                            borgirs["kcal"],
-                            borgirs["link"],
-                            borgirs["ilink"],
-                            borgirs["wishlist"]))
-                      ]);
+                  return BurgerCard(
+                    Burger(
+                      borgirs["name"],
+                      borgirs["kcal"],
+                      borgirs["link"],
+                      borgirs["ilink"],
+                      borgirs["wishlist"],
+                    ),
+                  );
                 },
               ),
             );

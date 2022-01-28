@@ -46,9 +46,9 @@ class BurgerDetails extends StatelessWidget {
                     ),
                   ),
                   BurgerName(burger: burger),
-                  const BurgerDescription(),
+                  const BurgerDescription('Description'),
                   const BurgerDetailedDescription(),
-                  LikedButton(burger)
+                  LikedButton(burger),
                 ],
               ),
             ),
@@ -81,6 +81,7 @@ class _LikedButtonState extends State<LikedButton> {
       child: InkWell(
         onTap: () {
           setState(() {
+            //Should indetify which burger is viewing the user
             burgerList[0].toggleLiked();
           });
         },
@@ -121,7 +122,9 @@ class BurgerDetailedDescription extends StatelessWidget {
 }
 
 class BurgerDescription extends StatelessWidget {
-  const BurgerDescription({
+  final String description;
+  const BurgerDescription(
+    this.description, {
     Key? key,
   }) : super(key: key);
 
