@@ -47,7 +47,7 @@ class Catalogue extends StatelessWidget {
                   return BurgerCard(
                     Burger(
                       borgirs["name"],
-                      borgirs["kcal"],
+                      borgirs["price"],
                       borgirs["link"],
                       borgirs["ilink"],
                       borgirs["wishlist"],
