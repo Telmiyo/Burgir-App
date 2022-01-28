@@ -46,6 +46,7 @@ class Catalogue extends StatelessWidget {
                   borgirs = snapshot.data!.docs[index];
                   return BurgerCard(
                     Burger(
+                      borgirs["ref"],
                       borgirs["name"],
                       borgirs["price"],
                       borgirs["link"],
