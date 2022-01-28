@@ -67,7 +67,7 @@ class _NavigationState extends State<Navigation> {
                 widgetOptions = [
                   Catalogue(snapshot.data?.docs[1]),
                   WishList(snapshot.data?.docs[2]),
-                  AboutUs(snapshot.data?.docs[0]),
+                  AboutUs(),
                 ];
                 return Scaffold(
                   body: IndexedStack(

@@ -7,9 +7,7 @@ import 'package:url_launcher/link.dart';
 import 'AboutUs/character_widget.dart';
 
 class AboutUs extends StatefulWidget {
-  final dynamic doc;
-
-  const AboutUs(this.doc, {Key? key}) : super(key: key);
+  const AboutUs({Key? key}) : super(key: key);
 
   @override
   State<AboutUs> createState() => _AboutUsState();
@@ -53,7 +51,7 @@ class _AboutUsState extends State<AboutUs> {
                 children: <Widget>[
                   for (var i = 0; i < characters.length; i++)
                     CharacterWidget(character: characters[i]),
-                  MeetTheTeam(widget.doc),
+                  MeetTheTeam(),
                 ],
               ),
             ),
@@ -83,9 +81,7 @@ class Header extends StatelessWidget {
 }
 
 class MeetTheTeam extends StatelessWidget {
-  final dynamic doc;
-  const MeetTheTeam(
-    this.doc, {
+  const MeetTheTeam({
     Key? key,
   }) : super(key: key);
 
