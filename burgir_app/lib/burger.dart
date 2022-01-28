@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Burger {
+  String bref;
   final String name;
   // ignore: prefer_typing_uninitialized_variables
   final img;
@@ -9,6 +10,7 @@ class Burger {
   final Timestamp offer;
   bool wishlist;
   Burger(
+    this.bref,
     this.name,
     this.price,
     this.link,

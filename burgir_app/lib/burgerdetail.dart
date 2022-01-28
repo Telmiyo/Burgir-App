@@ -250,30 +250,47 @@ class LikedButton extends StatefulWidget {
 class _LikedButtonState extends State<LikedButton> {
   final Burger burgir;
   _LikedButtonState(this.burgir);
+  final ber =
+      FirebaseFirestore.instance.collection("/Burgers/Catalogue/Borgirs");
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Container(
-        alignment: Alignment.topRight,
-        // width: double.infinity,
-        // margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-        child: InkWell(
-          onTap: () {
-            //burgerList[1].toggleLiked();
-          },
-          child: DecoratedIcon(
-            widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,
-            size: 30,
-            color: Configurations.instance.mainColor,
-            shadows: [
-              BoxShadow(
-                color: Configurations.instance.shadowColor,
-                offset: const Offset(0.0, 3.0),
-              ),
-            ],
-          ),
-        ),
-      ),
+      child: StreamBuilder(
+          stream: ber.snapshots(),
+          builder: (BuildContext context,
+              AsyncSnapshot<QuerySnapshot<Map<String, dynamic>>> snapshot) {
+            if (!snapshot.hasData) {
+              return const Center(child: CircularProgressIndicator());
+            }
+            if (snapshot.hasData) {
+              return InkWell(
+                onTap: () {
+                  debugPrint("clicked");
+                  if (burgir.wishlist == false) {
+                    ber.doc(burgir.bref).update({'wishlist': true});
+                  }
+                  if (burgir.wishlist == true) {
+                    ber.doc(burgir.bref).update({'wishlist': false});
+                  }
+                },
+                child: DecoratedIcon(
+                  widget.burger.wishlist
+                      ? Icons.favorite
+                      : Icons.favorite_outline,
+                  size: 30,
+                  color: Configurations.instance.mainColor,
+                  shadows: [
+                    BoxShadow(
+                      color: Configurations.instance.shadowColor,
+                      offset: const Offset(0.0, 3.0),
+                    ),
+                  ],
+                ),
+              );
+            } else {
+              return const Center(child: Text("doc is null!"));
+            }
+          }),
     );
   }
 }

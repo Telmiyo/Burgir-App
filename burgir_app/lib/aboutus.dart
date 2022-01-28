@@ -34,23 +34,27 @@ class _AboutUsState extends State<AboutUs> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Padding(
-                padding: const EdgeInsets.only(left: 32.0, top: 8.0),
-                child: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: "Burger Buddies", style: Configurations.display1),
-                  const TextSpan(text: "\n"),
-                  TextSpan(
-                      text: "A new way to introduce NFTs",
-                      style: Configurations.display2)
-                ]))),
+              padding: const EdgeInsets.only(left: 32.0, top: 8.0),
+              child: RichText(
+                text: TextSpan(
+                  children: [
+                    TextSpan(
+                        text: "Burger Buddies", style: Configurations.display1),
+                    const TextSpan(text: "\n"),
+                    TextSpan(
+                        text: "A new way to introduce NFTs",
+                        style: Configurations.display2)
+                  ],
+                ),
+              ),
+            ),
             Expanded(
               child: PageView(
                 controller: _pageController,
                 children: <Widget>[
                   for (var i = 0; i < characters.length; i++)
                     CharacterWidget(character: characters[i]),
-                  MeetTheTeam(),
+                  MeetTheTeam(widget.doc),
                 ],
               ),
             ),
@@ -80,7 +84,9 @@ class Header extends StatelessWidget {
 }
 
 class MeetTheTeam extends StatelessWidget {
-  const MeetTheTeam({
+  final dynamic doc;
+  const MeetTheTeam(
+    this.doc, {
     Key? key,
   }) : super(key: key);
 

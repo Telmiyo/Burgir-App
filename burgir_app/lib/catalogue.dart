@@ -46,6 +46,7 @@ class Catalogue extends StatelessWidget {
                   borgirs = snapshot.data!.docs[index];
                   return BurgerCard(
                     Burger(
+                      borgirs["ref"],
                       borgirs["name"],
                       borgirs["price"],
                       borgirs["link"],
@@ -159,14 +160,46 @@ class BurgerCard extends StatelessWidget {
   }
 }
 
-// class Burger {
-//   final String name;
-//   // ignore: prefer_typing_uninitialized_variables
-//   final img;
-//   final int kcal;
-//   Burger(
-//     this.name,
-//     this.kcal,
-//     this.img,
-//   );
-// }
+class EmptyBurgerCard extends StatelessWidget {
+  const EmptyBurgerCard({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.all(3),
+      decoration: BoxDecoration(
+        color: Configurations.instance.mainColor.withAlpha(150),
+        borderRadius: const BorderRadius.all(
+          Radius.circular(10),
+        ),
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Expanded(
+            child: Container(
+              margin: const EdgeInsets.symmetric(
+                vertical: 10,
+                horizontal: 10,
+              ),
+              decoration: BoxDecoration(
+                color: Configurations.instance.secondaryColor.withAlpha(0),
+                borderRadius: const BorderRadius.all(
+                  Radius.circular(10),
+                ),
+              ),
+              height: 140,
+              width: 140,
+            ),
+          ),
+          Container(
+            margin: const EdgeInsets.all(5),
+          ),
+        ],
+      ),
+    );
+  }
+}
