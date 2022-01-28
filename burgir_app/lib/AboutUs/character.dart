@@ -22,7 +22,7 @@ List characters = [
       colors: [Colors.red, Colors.grey.shade400]),
   Character(
       name: "What is NFT?",
-      imagePath: "assets/nft-icon.jpeg",
+      imagePath: "assets/nft-icon.png",
       description:
           "NFTs can really be anything digital (such as drawings, music, your brain downloaded and turned into an AI), but a lot of the current excitement is around using the tech to sell digital art.",
       colors: [Colors.blue.shade200, Colors.grey.shade400]),
