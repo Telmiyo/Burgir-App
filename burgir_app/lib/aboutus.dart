@@ -280,44 +280,28 @@ class DeveloperCard extends StatelessWidget {
         padding: const EdgeInsets.all(0),
         margin: const EdgeInsets.all(20),
         decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Colors.blue.shade400, Colors.pink.shade200],
+            begin: Alignment.topRight,
+            end: Alignment.bottomLeft,
+          ),
           color: color,
           borderRadius: BorderRadius.circular(30),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
-              height: 400,
-              width: 300,
+            Expanded(
               child: Image(
                 image: AssetImage(profileImage),
               ),
             ),
-            Text(
-              name,
-              style: const TextStyle(
-                fontSize: 40,
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-            Text(
-              alias,
-              style: TextStyle(
-                fontSize: 25,
-                fontWeight: FontWeight.w400,
-                color: Colors.black.withAlpha(100),
-              ),
-            ),
+            Text(name, style: Configurations.h1),
+            Text(alias, style: Configurations.h2),
             Container(
               margin: const EdgeInsets.symmetric(vertical: 30, horizontal: 10),
-              child: Text(
-                description,
-                style: const TextStyle(
-                  fontSize: 20,
-                  fontWeight: FontWeight.w400,
-                ),
-              ),
-            )
+              child: Text(description, style: Configurations.h2),
+            ),
           ],
         ),
       ),

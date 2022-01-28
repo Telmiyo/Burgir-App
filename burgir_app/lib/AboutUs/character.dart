@@ -21,12 +21,6 @@ List characters = [
           "Burger Buddies is a collection of 10,000 delicious NFT burgers, with all the ingredients prepared with love and care and randomly assembled. For those food lovers in the metaverse who know how to enjoy a good burger, you are invited to choose and collect the one that you find most delicious. Each one of these burgers are waiting to be eaten, with your family, friends or even alone. Or just you can just own it and admire it while your mouth keeps watering..",
       colors: [Colors.red, Colors.grey.shade400]),
   Character(
-      name: "What is NFT?",
-      imagePath: "assets/nft-icon.png",
-      description:
-          "NFTs can really be anything digital (such as drawings, music, your brain downloaded and turned into an AI), but a lot of the current excitement is around using the tech to sell digital art.",
-      colors: [Colors.blue.shade200, Colors.grey.shade400]),
-  Character(
       name: "GiveAway!",
       imagePath: "assets/giveaway.jpg",
       description:
