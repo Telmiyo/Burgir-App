@@ -32,14 +32,4 @@ List characters = [
       description:
           "Sign up now to the giveaway. Take advantage now of the last opportunity to join the draw for a unique and special burger! Get your ticket buying any burger from our collection. On February 31st we will announce the result of the winner of our special Hamburger number #1563.!",
       colors: [Colors.pink.shade200, Colors.redAccent.shade400]),
-  Character(
-      name: "The Team",
-      imagePath: "assets/aitor.jpeg",
-      description: "Get and know the Team!",
-      colors: [Colors.yellow.shade200, Colors.grey.shade400]),
-  Character(
-      name: "The Team",
-      imagePath: "assets/marti.jpeg",
-      description: "Get and know the Team!",
-      colors: [Colors.red.shade200, Colors.grey.shade400])
 ];
