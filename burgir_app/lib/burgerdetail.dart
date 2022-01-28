@@ -24,7 +24,6 @@ class BurgerDetails extends StatelessWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(40),
-              padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
               decoration: BoxDecoration(
                 color: Configurations.instance.secondaryColor,
                 borderRadius: const BorderRadius.all(
@@ -37,19 +36,17 @@ class BurgerDetails extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                        height: 250,
-                        width: 250,
-                        // child: ClipRRect(
-                        //   borderRadius: BorderRadius.circular(20), // Image border
-                        //   child: SizedBox.fromSize(
-                        //     size: const Size.fromRadius(10), // Image radius
-                        //     child: Image.network(
-                        //       burger.img,
-                        //       fit: BoxFit.cover,
-                        //     ),
-                        //   ),
-                        // ),
-                        child: Image.network(burger.img)),
+                      margin: const EdgeInsets.fromLTRB(30, 50, 30, 10),
+                      decoration: BoxDecoration(
+                        color: Configurations.instance.mainColor,
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(20),
+                        ),
+                      ),
+                      height: 250,
+                      width: 250,
+                      child: Image.network(burger.img),
+                    ),
                   ),
                   BurgerName(burger: burger),
                   Container(
@@ -187,10 +184,12 @@ class LikedButton extends StatefulWidget {
   }) : super(key: key);
 
   @override
-  State<LikedButton> createState() => _LikedButtonState();
+  State<LikedButton> createState() => _LikedButtonState(burger);
 }
 
 class _LikedButtonState extends State<LikedButton> {
+  final Burger burgir;
+  _LikedButtonState(this.burgir);
   @override
   Widget build(BuildContext context) {
     return Expanded(
