@@ -46,7 +46,7 @@ class Header extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 80, horizontal: 30),
       alignment: Alignment.center,
       child: Configurations.instance
-          .CustomText("Meet the team behind", TextAlign.center),
+          .CustomText("Meet the team behind", 10.0, TextAlign.center),
     );
   }
 }
