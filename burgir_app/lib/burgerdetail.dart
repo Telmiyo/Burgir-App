@@ -22,6 +22,7 @@ class BurgerDetails extends StatelessWidget {
             child: Container(
               width: double.infinity,
               margin: const EdgeInsets.all(40),
+              padding: const EdgeInsets.fromLTRB(10, 30, 10, 10),
               decoration: BoxDecoration(
                 color: Configurations.instance.secondaryColor,
                 borderRadius: const BorderRadius.all(
@@ -34,27 +35,51 @@ class BurgerDetails extends StatelessWidget {
                 children: [
                   Expanded(
                     child: Container(
-                      margin: const EdgeInsets.fromLTRB(30, 50, 30, 10),
-                      decoration: BoxDecoration(
-                        color: Configurations.instance.mainColor,
-                        borderRadius: const BorderRadius.all(
-                          Radius.circular(20),
-                        ),
-                      ),
-                      height: 250,
-                      width: 250,
-                    ),
+                        height: 250,
+                        width: 250,
+                        // child: ClipRRect(
+                        //   borderRadius: BorderRadius.circular(20), // Image border
+                        //   child: SizedBox.fromSize(
+                        //     size: const Size.fromRadius(10), // Image radius
+                        //     child: Image.network(
+                        //       burger.img,
+                        //       fit: BoxFit.cover,
+                        //     ),
+                        //   ),
+                        // ),
+                        child: Image.network(burger.img)),
                   ),
                   BurgerName(burger: burger),
-                  const BurgerDescription('Description'),
-                  const BurgerDetailedDescription(),
-                  LikedButton(burger),
+                  //const BurgerDescription('Description'),
+                  //const BurgerDetailedDescription(),
+                  Row(
+                    children: [
+                      Price(),
+                      LikedButton(burger),
+                    ],
+                  ),
                 ],
               ),
             ),
           ),
           BottomBar(burger),
         ],
+      ),
+    );
+  }
+}
+
+class Price extends StatelessWidget {
+  const Price({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Expanded(
+      child: Text(
+        'Price',
+        style: const TextStyle(fontSize: 18),
       ),
     );
   }
@@ -74,16 +99,13 @@ class LikedButton extends StatefulWidget {
 class _LikedButtonState extends State<LikedButton> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      alignment: Alignment.topRight,
-      width: double.infinity,
-      margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+    return Expanded(
+      // alignment: Alignment.topRight,
+      // width: double.infinity,
+      // margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
       child: InkWell(
         onTap: () {
-          setState(() {
-            //Should indetify which burger is viewing the user
-            burgerList[0].toggleLiked();
-          });
+          setState(() {});
         },
         child: DecoratedIcon(
           widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,
