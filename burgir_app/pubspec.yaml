@@ -75,8 +75,10 @@ flutter:
     - assets/logo.png
     - assets/logo_white.png
     - assets/logo_black.png
+    - assets/logo_oficial.png
     - assets/background.png
     - assets/nft-icon.png
+    - assets/giveaway.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
