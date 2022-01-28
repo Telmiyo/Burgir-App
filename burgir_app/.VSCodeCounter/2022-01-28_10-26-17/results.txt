@@ -1,0 +1,32 @@
+Date : 2022-01-28 10:26:17
+Directory : c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib
+Total : 8 files,  975 codes, 71 comments, 86 blanks, all 1132 lines
+
+Languages
++----------+------------+------------+------------+------------+------------+
+| language | files      | code       | comment    | blank      | total      |
++----------+------------+------------+------------+------------+------------+
+| Dart     |          8 |        975 |         71 |         86 |      1,132 |
++----------+------------+------------+------------+------------+------------+
+
+Directories
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                              | files      | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                 |          8 |        975 |         71 |         86 |      1,132 |
++-----------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++-----------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| filename                                                                          | language | code       | comment    | blank      | total      |
++-----------------------------------------------------------------------------------+----------+------------+------------+------------+------------+
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\aboutus.dart          | Dart     |        275 |          9 |         11 |        295 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\burger.dart           | Dart     |         15 |          1 |          2 |         18 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\burgerdetail.dart     | Dart     |        237 |          2 |         23 |        262 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\catalogue.dart        | Dart     |        117 |         31 |         12 |        160 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\config.dart           | Dart     |         37 |          4 |          7 |         48 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\firebase_options.dart | Dart     |         48 |         13 |          6 |         67 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\main.dart             | Dart     |        162 |          3 |         16 |        181 |
+| c:\Users\Claudia\Documents\GitHub\Burgir-App\burgir_app\lib\wishlist.dart         | Dart     |         84 |          8 |          9 |        101 |
+| Total                                                                             |          |        975 |         71 |         86 |      1,132 |
++-----------------------------------------------------------------------------------+----------+------------+------------+------------+------------+

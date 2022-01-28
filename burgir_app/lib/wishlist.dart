@@ -32,7 +32,7 @@ class WishList extends StatelessWidget {
 // ignore: non_constant_identifier_names
 void AddBurgers(dynamic doc) {
   //burgerList.add(Burger(doc['Burger1'], 1, 1, true));
-  burgerList.add(Burger("Burger #2", 1, 1, true));
+  //burgerList.add(Burger("Burger #2", 1, 1, true));
 }
 
 class BurgerCard extends StatelessWidget {

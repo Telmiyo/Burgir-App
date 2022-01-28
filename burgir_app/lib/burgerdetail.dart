@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:burgir_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
+
 import 'burger.dart';
 import 'catalogue.dart';
 

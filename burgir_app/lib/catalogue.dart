@@ -13,7 +13,8 @@ List<Burger> burgerList = [];
 class Catalogue extends StatelessWidget {
   final dynamic doc;
   Catalogue(this.doc, {Key? key}) : super(key: key);
-  final col = FirebaseFirestore.instance.collection("Borgirs");
+  final col =
+      FirebaseFirestore.instance.collection("/Burgers/Catalogue/Borgirs");
   dynamic borgirs;
 
   @override
@@ -34,14 +35,17 @@ class Catalogue extends StatelessWidget {
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (BuildContext context, index) {
                   borgirs = snapshot.data!.docs[index];
-                  String name = borgirs["name"];
                   return GridView.count(
                       childAspectRatio: 2 / 2.2,
                       crossAxisCount: 2,
                       shrinkWrap: true,
                       children: [
-                        for (int i = 0; i < burgerList.length; i++)
-                          BurgerCard(burgerList[i])
+                        BurgerCard(Burger(
+                            borgirs["name"],
+                            borgirs["kcal"],
+                            borgirs["link"],
+                            borgirs["ilink"],
+                            borgirs["wishlist"]))
                       ]);
                 },
               ),
@@ -52,20 +56,6 @@ class Catalogue extends StatelessWidget {
         },
       ),
     );
-    burgerList.clear();
-    AddBurgers(doc);
-    return Scaffold(
-        appBar: Configurations.instance.CustomAppbar("Burgers Catalogue"),
-        body: Scrollbar(
-          child: GridView.count(
-            childAspectRatio: 2 / 2.2,
-            crossAxisCount: 2,
-            children: [
-              for (int i = 0; i < burgerList.length; i++)
-                BurgerCard(burgerList[i])
-            ],
-          ),
-        ));
   }
   //AddBurgers(doc);
   // return Scaffold(
@@ -156,14 +146,14 @@ class BurgerCard extends StatelessWidget {
   }
 }
 
-class Burger {
-  final String name;
-  // ignore: prefer_typing_uninitialized_variables
-  final img;
-  final int kcal;
-  Burger(
-    this.name,
-    this.kcal,
-    this.img,
-  );
-}
+// class Burger {
+//   final String name;
+//   // ignore: prefer_typing_uninitialized_variables
+//   final img;
+//   final int kcal;
+//   Burger(
+//     this.name,
+//     this.kcal,
+//     this.img,
+//   );
+// }
