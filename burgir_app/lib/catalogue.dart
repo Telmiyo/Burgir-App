@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 import 'package:burgir_app/config.dart';
 import 'burger.dart';
@@ -10,6 +9,7 @@ import 'config.dart';
 
 List<Burger> burgerList = [];
 
+// ignore: must_be_immutable
 class Catalogue extends StatelessWidget {
   final dynamic doc;
   Catalogue(this.doc, {Key? key}) : super(key: key);
@@ -29,7 +29,6 @@ class Catalogue extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            dynamic d = snapshot.data!.docs.length;
             return Scaffold(
               body: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

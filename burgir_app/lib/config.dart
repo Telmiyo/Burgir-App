@@ -57,6 +57,7 @@ class Configurations {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Text CustomHeader(String text, double size, TextAlign align) {
     return Text(
       text,
@@ -86,7 +87,7 @@ class Configurations {
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30))),
       leading: Container(
-          padding: EdgeInsets.all(10),
+          padding: const EdgeInsets.all(10),
           child: Image.asset("assets/logo_black.png")),
       actions: const <Widget>[
         Padding(

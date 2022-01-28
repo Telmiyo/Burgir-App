@@ -5,7 +5,9 @@ class Burger {
   final String name;
   // ignore: prefer_typing_uninitialized_variables
   final img;
+  // ignore: prefer_typing_uninitialized_variables
   final link;
+  // ignore: prefer_typing_uninitialized_variables
   final price;
   final Timestamp offer;
   bool wishlist;

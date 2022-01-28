@@ -20,7 +20,6 @@ class _AboutUsState extends State<AboutUs> {
   int currentPage = 0;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController = PageController(
         viewportFraction: 1.0, initialPage: currentPage, keepPage: false);

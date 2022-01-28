@@ -1,7 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 import 'burger.dart';
-import 'burgerdetail.dart';
 import 'package:flutter/material.dart';
 
 import 'catalogue.dart';
@@ -9,6 +8,7 @@ import 'config.dart';
 
 List<Burger> burgerList = [];
 
+// ignore: must_be_immutable
 class WishList extends StatelessWidget {
   final dynamic doc;
   WishList(this.doc, {Key? key}) : super(key: key);
@@ -28,7 +28,6 @@ class WishList extends StatelessWidget {
             return const Center(child: CircularProgressIndicator());
           }
           if (snapshot.hasData) {
-            dynamic d = snapshot.data!.docs.length;
             return Scaffold(
               body: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
@@ -58,11 +57,7 @@ class WishList extends StatelessWidget {
                       ),
                     );
                   } else {
-                    return EmptyBurgerCard();
-                    return Container(
-                      alignment: Alignment.center,
-                      child: const Text("Empty"),
-                    );
+                    return const EmptyBurgerCard();
                   }
                 },
               ),
