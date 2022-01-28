@@ -16,7 +16,7 @@ class CharacterDetailScreen extends StatelessWidget {
         fit: StackFit.expand,
         children: <Widget>[
           Hero(
-            tag: "background-${characters[0].name}",
+            tag: "background-${character.name}",
             child: DecoratedBox(
                 decoration: BoxDecoration(
                     gradient: LinearGradient(
@@ -44,7 +44,7 @@ class CharacterDetailScreen extends StatelessWidget {
                 Align(
                   alignment: Alignment.topRight,
                   child: Hero(
-                    tag: "image-${characters[0].name}",
+                    tag: "image-${character.name}",
                     child: Image.asset(character.imagePath,
                         height: screenHeigh * 0.35),
                   ),
@@ -53,7 +53,7 @@ class CharacterDetailScreen extends StatelessWidget {
                   padding:
                       const EdgeInsets.symmetric(horizontal: 32.0, vertical: 8),
                   child: Hero(
-                    tag: "name-${characters[0].name}",
+                    tag: "name-${character.name}",
                     child: Text(
                       character.name,
                       style: Configurations.h1,

@@ -1,36 +1,60 @@
-import 'package:burgir_app/AboutUs/character_list.dart';
+import 'package:burgir_app/AboutUs/character.dart';
 import 'package:burgir_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
 import 'package:url_launcher/link.dart';
 
-class AboutUs extends StatelessWidget {
+import 'AboutUs/character_widget.dart';
+
+class AboutUs extends StatefulWidget {
   final dynamic doc;
+
   const AboutUs(this.doc, {Key? key}) : super(key: key);
+
+  @override
+  State<AboutUs> createState() => _AboutUsState();
+}
+
+class _AboutUsState extends State<AboutUs> {
+  late PageController _pageController;
+  int currentPage = 0;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    _pageController = PageController(
+        viewportFraction: 1.0, initialPage: currentPage, keepPage: false);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Configurations.instance.CustomAppbar("About Us"),
-      // body: DecoratedBox(
-      //   decoration: const BoxDecoration(
-      //     image: DecorationImage(
-      //       image: AssetImage('assets/background.png'),
-      //       fit: BoxFit.cover,
-      //     ),
-      //   ),
-      //   child:
-      body: const CharacterListing(),
-      // const Header(),
-      // const MeetTheTeam(),
-
-      // body: Column(
-      //   children: const [
-      //     Header(),
-      //     MeetTheTeam(),
-      //   ],
-      // ),
-    );
+        appBar: Configurations.instance.CustomAppbar("About Us"),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Padding(
+                padding: const EdgeInsets.only(left: 32.0, top: 8.0),
+                child: RichText(
+                    text: TextSpan(children: [
+                  TextSpan(
+                      text: "Burger Buddies", style: Configurations.display1),
+                  const TextSpan(text: "\n"),
+                  TextSpan(
+                      text: "A new way to introduce NFTs",
+                      style: Configurations.display2)
+                ]))),
+            Expanded(
+              child: PageView(
+                controller: _pageController,
+                children: <Widget>[
+                  for (var i = 0; i < characters.length; i++)
+                    CharacterWidget(character: characters[i])
+                ],
+              ),
+            ),
+          ],
+        ));
   }
 }
 

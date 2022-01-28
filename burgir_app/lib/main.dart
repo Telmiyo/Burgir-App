@@ -1,3 +1,5 @@
+import 'package:burgir_app/config.dart';
+
 import 'wishlist.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';

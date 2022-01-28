@@ -73,6 +73,8 @@ flutter:
     - assets/marti.jpeg
     - assets/aitor.jpeg
     - assets/logo.png
+    - assets/logo_white.png
+    - assets/logo_black.png
     - assets/background.png
     - assets/nft-icon.png
 

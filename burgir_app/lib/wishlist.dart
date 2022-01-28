@@ -19,6 +19,7 @@ class WishList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: Configurations.instance.CustomAppbar("WishList"),
       body: StreamBuilder(
         stream: col.snapshots(),
         builder: (BuildContext context,

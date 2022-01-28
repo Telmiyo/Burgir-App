@@ -5,7 +5,9 @@ import 'package:flutter/material.dart';
 import 'character_detail_screen.dart';
 
 class CharacterWidget extends StatelessWidget {
-  const CharacterWidget({Key? key}) : super(key: key);
+  final Character character;
+  const CharacterWidget({Key? key, required this.character}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     final screenHeigh = MediaQuery.of(context).size.height;
@@ -17,7 +19,7 @@ class CharacterWidget extends StatelessWidget {
             PageRouteBuilder(
                 transitionDuration: const Duration(milliseconds: 350),
                 pageBuilder: (context, _, __) =>
-                    CharacterDetailScreen(character: characters[0])));
+                    CharacterDetailScreen(character: character)));
       },
       child: Stack(
         children: [
@@ -26,14 +28,14 @@ class CharacterWidget extends StatelessWidget {
             child: ClipPath(
               clipper: CharacterCardBackgroundClipper(),
               child: Hero(
-                tag: "background-${characters[0].name}",
+                tag: "background-${character.name}",
                 child: Container(
                   padding: EdgeInsets.symmetric(horizontal: screenWidth * 0.5),
                   height: 0.55 * screenHeigh,
                   width: 0.9 * screenWidth,
                   decoration: BoxDecoration(
                       gradient: LinearGradient(
-                    colors: characters[0].colors,
+                    colors: character.colors,
                     begin: Alignment.topRight,
                     end: Alignment.bottomLeft,
                   )),
@@ -42,12 +44,12 @@ class CharacterWidget extends StatelessWidget {
             ),
           ),
           Align(
-            alignment: const Alignment(0, 35),
+            alignment: Alignment.center,
             child: Hero(
-              tag: "image-${characters[0].name}",
+              tag: "image-${character.name}",
               child: Image.asset(
-                characters[0].imagePath,
-                height: screenHeigh * 0.55,
+                character.imagePath,
+                height: screenHeigh * 0.4,
               ),
             ),
           ),
@@ -58,12 +60,12 @@ class CharacterWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.end,
               children: <Widget>[
                 Hero(
-                  tag: "name-${characters[0].name}",
+                  tag: "name-${character.name}",
                   child: Material(
                     color: Colors.transparent,
                     child: Container(
                       child: Text(
-                        characters[0].name,
+                        character.name,
                         style: Configurations.h1,
                       ),
                     ),

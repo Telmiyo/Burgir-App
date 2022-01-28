@@ -85,7 +85,9 @@ class Configurations {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30))),
-      leading: const Icon(Icons.arrow_back_ios),
+      leading: Container(
+          padding: EdgeInsets.all(10),
+          child: Image.asset("assets/logo_black.png")),
       actions: const <Widget>[
         Padding(
           padding: EdgeInsets.only(right: 16),

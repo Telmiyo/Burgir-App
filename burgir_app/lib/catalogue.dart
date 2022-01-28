@@ -20,6 +20,7 @@ class Catalogue extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: Configurations.instance.CustomAppbar("Catalogue"),
       body: StreamBuilder(
         stream: col.snapshots(),
         builder: (BuildContext context,
@@ -147,7 +148,7 @@ class BurgerCard extends StatelessWidget {
                 13,
                 TextAlign.center,
                 Configurations.instance.textColor.withAlpha(
-                  200,
+                  600,
                 ),
               ),
             )
