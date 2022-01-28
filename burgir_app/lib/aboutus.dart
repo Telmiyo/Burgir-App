@@ -49,7 +49,8 @@ class _AboutUsState extends State<AboutUs> {
                 controller: _pageController,
                 children: <Widget>[
                   for (var i = 0; i < characters.length; i++)
-                    CharacterWidget(character: characters[i])
+                    CharacterWidget(character: characters[i]),
+                  MeetTheTeam(),
                 ],
               ),
             ),
