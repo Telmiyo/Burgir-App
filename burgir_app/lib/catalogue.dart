@@ -32,9 +32,9 @@ class Catalogue extends StatelessWidget {
             return Scaffold(
               body: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                  childAspectRatio: 1 / 1,
-                  crossAxisSpacing: 30,
-                  mainAxisSpacing: 20,
+                  childAspectRatio: 1 / 1.2,
+                  crossAxisSpacing: 15,
+                  mainAxisSpacing: 15,
                   maxCrossAxisExtent: 200,
                 ),
                 //itemCount: snapshot.data!.docs.length,
@@ -51,6 +51,7 @@ class Catalogue extends StatelessWidget {
                       borgirs["link"],
                       borgirs["ilink"],
                       borgirs["wishlist"],
+                      borgirs["offer"],
                     ),
                   );
                 },
@@ -115,31 +116,42 @@ class BurgerCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Expanded(
-                child: Container(
-              margin: const EdgeInsets.fromLTRB(
-                30,
-                30,
-                30,
-                15,
-              ),
-              decoration: BoxDecoration(
-                color: Configurations.instance.secondaryColor,
-                borderRadius: const BorderRadius.all(
-                  Radius.circular(10),
+              child: Container(
+                margin: const EdgeInsets.symmetric(
+                  vertical: 10,
+                  horizontal: 10,
                 ),
-              ),
-              height: 140,
-              width: 180,
-              child: Image.network(burger.img),
-            )),
-            Text(
-              burger.name,
-              style: const TextStyle(
-                fontSize: 18,
-                fontWeight: FontWeight.w600,
+                decoration: BoxDecoration(
+                  color: Configurations.instance.secondaryColor,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(10),
+                  ),
+                ),
+                height: 140,
+                width: 140,
+                child: Image.network(burger.img),
               ),
             ),
-            Configurations.instance.CustomText(burger.name, TextAlign.center),
+            Container(
+              margin: const EdgeInsets.all(5),
+              child: Configurations.instance.CustomText(
+                burger.name,
+                13,
+                TextAlign.center,
+                Configurations.instance.textColor,
+              ),
+            ),
+            Container(
+              margin: const EdgeInsets.all(5),
+              child: Configurations.instance.CustomText(
+                burger.price.toString() + ' ETH',
+                13,
+                TextAlign.center,
+                Configurations.instance.textColor.withAlpha(
+                  200,
+                ),
+              ),
+            )
           ],
         ),
       ),

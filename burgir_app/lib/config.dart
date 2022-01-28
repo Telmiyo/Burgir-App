@@ -22,11 +22,11 @@ class Configurations {
   //Functions
 
   // ignore: non_constant_identifier_names
-  Text CustomText(String text, double size, TextAlign align) {
+  Text CustomText(String text, double size, TextAlign align, Color color) {
     return Text(
       text,
       style: GoogleFonts.lato(
-        color: textColor,
+        color: color,
         fontSize: size,
         letterSpacing: 3.0,
       ),
@@ -51,7 +51,12 @@ class Configurations {
   AppBar CustomAppbar(String title) {
     return AppBar(
       centerTitle: true,
-      title: CustomText(title, 15.0, TextAlign.center),
+      title: CustomText(
+        title,
+        15.0,
+        TextAlign.center,
+        Configurations.instance.textColor,
+      ),
       backgroundColor: mainColor,
       shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(

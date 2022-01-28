@@ -1,8 +1,10 @@
 import 'dart:math';
 
 import 'package:burgir_app/config.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
+import 'package:url_launcher/link.dart';
 
 import 'burger.dart';
 import 'catalogue.dart';
@@ -50,13 +52,12 @@ class BurgerDetails extends StatelessWidget {
                         child: Image.network(burger.img)),
                   ),
                   BurgerName(burger: burger),
-                  //const BurgerDescription('Description'),
-                  //const BurgerDetailedDescription(),
-                  Row(
-                    children: [
-                      Price(),
-                      LikedButton(burger),
-                    ],
+                  Container(
+                    margin: const EdgeInsets.symmetric(
+                      horizontal: 15,
+                      vertical: 0,
+                    ),
+                    child: Description(burger: burger),
                   ),
                 ],
               ),
@@ -69,17 +70,110 @@ class BurgerDetails extends StatelessWidget {
   }
 }
 
-class Price extends StatelessWidget {
-  const Price({
+class Description extends StatelessWidget {
+  const Description({
+    Key? key,
+    required this.burger,
+  }) : super(key: key);
+
+  final Burger burger;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Row(
+          children: [
+            Price(burger),
+            LikedButton(burger),
+          ],
+        ),
+        Row(
+          children: [
+            BuyNow(burger),
+            Offer(burger),
+          ],
+        ),
+      ],
+    );
+  }
+}
+
+class BuyNow extends StatelessWidget {
+  final Burger burger;
+  const BuyNow(
+    this.burger, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 5,
+      ),
+      child: Link(
+        uri: Uri.parse(burger.link),
+        builder: (context, followLink) => ElevatedButton(
+          onPressed: followLink,
+          child: Configurations.instance.CustomText(
+            'Buy now',
+            13,
+            TextAlign.center,
+            Configurations.instance.textColor,
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class Offer extends StatelessWidget {
+  final Burger burger;
+  const Offer(
+    this.burger, {
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      child: Text(
-        'Price',
-        style: const TextStyle(fontSize: 18),
+      child: Container(
+        margin: const EdgeInsets.symmetric(
+          horizontal: 10,
+          vertical: 5,
+        ),
+        child: Configurations.instance.CustomText(
+          'Offer ends\nin ' + burger.offer.toDate().day.toString() + ' days',
+          10,
+          TextAlign.right,
+          Configurations.instance.textColor,
+        ),
+      ),
+    );
+  }
+}
+
+class Price extends StatelessWidget {
+  final Burger burger;
+  const Price(
+    this.burger, {
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(
+        horizontal: 10,
+        vertical: 5,
+      ),
+      child: Configurations.instance.CustomText(
+        burger.price.toString() + ' ETH',
+        19,
+        TextAlign.center,
+        Configurations.instance.textColor,
       ),
     );
   }
@@ -100,23 +194,25 @@ class _LikedButtonState extends State<LikedButton> {
   @override
   Widget build(BuildContext context) {
     return Expanded(
-      // alignment: Alignment.topRight,
-      // width: double.infinity,
-      // margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
-      child: InkWell(
-        onTap: () {
-          setState(() {});
-        },
-        child: DecoratedIcon(
-          widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,
-          size: 40,
-          color: Configurations.instance.mainColor,
-          shadows: [
-            BoxShadow(
-              color: Configurations.instance.shadowColor,
-              offset: const Offset(0.0, 3.0),
-            ),
-          ],
+      child: Container(
+        alignment: Alignment.topRight,
+        // width: double.infinity,
+        // margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
+        child: InkWell(
+          onTap: () {
+            setState(() {});
+          },
+          child: DecoratedIcon(
+            widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,
+            size: 40,
+            color: Configurations.instance.mainColor,
+            shadows: [
+              BoxShadow(
+                color: Configurations.instance.shadowColor,
+                offset: const Offset(0.0, 3.0),
+              ),
+            ],
+          ),
         ),
       ),
     );
@@ -174,12 +270,18 @@ class BurgerName extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: const EdgeInsets.all(0),
-      child: Text(burger.name,
-          style: const TextStyle(
-            fontSize: 35,
-            fontWeight: FontWeight.w600,
-          )),
+      margin: const EdgeInsets.fromLTRB(
+        10,
+        0,
+        10,
+        40,
+      ),
+      child: Configurations.instance.CustomText(
+        burger.name,
+        29,
+        TextAlign.center,
+        Configurations.instance.textColor,
+      ),
     );
   }
 }
