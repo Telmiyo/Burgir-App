@@ -139,7 +139,8 @@ class BurgerCard extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            Configurations.instance.CustomText(burger.name, TextAlign.center),
+            Configurations.instance
+                .CustomText(burger.name, 10.0, TextAlign.center),
           ],
         ),
       ),
