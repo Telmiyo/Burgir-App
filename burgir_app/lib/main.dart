@@ -88,8 +88,8 @@ class _NavigationState extends State<Navigation> {
                           icon: Icon(Icons.favorite, color: Colors.grey),
                           label: 'Wishlist'),
                       BottomNavigationBarItem(
-                          icon: Icon(Icons.person, color: Colors.grey),
-                          label: 'Account'),
+                          icon: Icon(Icons.group, color: Colors.grey),
+                          label: 'About Us'),
                     ],
                     currentIndex: _selectedIndex,
                     onTap: _onItemTap,
