@@ -101,14 +101,14 @@ class MeetTheTeam extends StatelessWidget {
               Colors.red,
               "Aitor",
               "The engineer",
-              "Des",
+              "Aitor is in charge of working on the connection with the database and the use of it.",
               'assets/aitor.jpeg',
             ),
             ProfileMiniature(
               Colors.blue,
               "Telmo",
-              "The latifundist",
-              "Des",
+              "Designer & Programmer",
+              "He has been in charge of making the design and programming section",
               'assets/telmo.jpeg',
             ),
           ],
@@ -119,8 +119,8 @@ class MeetTheTeam extends StatelessWidget {
             ProfileMiniature(
               Colors.green,
               "Marti",
-              "The UI master",
-              "Des",
+              "Designer & Programmer",
+              "He also has been in charge of making the design and programming section",
               'assets/marti.jpeg',
             ),
             WorkWithUsMiniature(
