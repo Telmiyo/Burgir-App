@@ -124,12 +124,7 @@ class BurgerCard extends StatelessWidget {
               ),
               height: 140,
               width: 180,
-
-              //child: Image(
-              //image: NetworkImage(
-              //"https://github.com/MartiDavicino/Flutter-App_Mobile-Devices/blob/main/App%20prototype/app_prototype/assets/1.png"),
-              //image: AssetImage("assets/" + img.toString() + "png"),
-              //),
+              child: Image.network(burger.img),
             )),
             Text(
               burger.name,
