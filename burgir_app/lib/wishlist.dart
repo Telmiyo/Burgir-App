@@ -57,15 +57,16 @@ class WishList extends StatelessWidget {
                       ),
                     );
                   } else {
-                    return BurgerCard(
-                      Burger(
-                          "Empty",
-                          "price",
-                          "https://opensea.io/collection/burger-buddies-collection",
-                          "https://www.creativefabrica.com/wp-content/uploads/2021/03/12/empty-box-icon-for-your-project-Graphics-9511703-1.jpg",
-                          false,
-                          Timestamp(0, 0)),
-                    );
+                    // return BurgerCard(
+                    //   Burger(
+                    //       "Empty",
+                    //       "price",
+                    //       "https://opensea.io/collection/burger-buddies-collection",
+                    //       "https://www.creativefabrica.com/wp-content/uploads/2021/03/12/empty-box-icon-for-your-project-Graphics-9511703-1.jpg",
+                    //       false,
+                    //       Timestamp(0, 0)),
+                    // );
+                    return EmptyBurgerCard();
                   }
                 },
               ),
