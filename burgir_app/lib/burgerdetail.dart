@@ -126,7 +126,7 @@ class BuyNow extends StatelessWidget {
   }
 }
 
-class Offer extends StatelessWidget {
+class Offer extends StatefulWidget {
   final Burger burger;
   const Offer(
     this.burger, {
@@ -134,7 +134,19 @@ class Offer extends StatelessWidget {
   }) : super(key: key);
 
   @override
+  State<Offer> createState() => _OfferState();
+}
+
+class _OfferState extends State<Offer> {
+  @override
   Widget build(BuildContext context) {
+    int getRemainingDays(DateTime dateComparision) {
+      DateTime currentDate = DateTime.now();
+
+      int remaingDays = dateComparision.difference(currentDate).inDays;
+      return remaingDays;
+    }
+
     return Expanded(
       child: Container(
         margin: const EdgeInsets.symmetric(
@@ -142,11 +154,19 @@ class Offer extends StatelessWidget {
           vertical: 5,
         ),
         child: Configurations.instance.CustomText(
-          'Offer ends\nin ' + burger.offer.toDate().day.toString() + ' days',
+          'Offer ends\nin ' +
+              getRemainingDays(widget.burger.offer.toDate()).toString() +
+              ' days',
           10,
           TextAlign.right,
           Configurations.instance.textColor,
         ),
+        // child: Configurations.instance.CustomText(
+        //   'Offer ends\nin ' + burger.offer.toDate().day.toString() + ' days',
+        //   10,
+        //   TextAlign.right,
+        //   Configurations.instance.textColor,
+        // ),
       ),
     );
   }
