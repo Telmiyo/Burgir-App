@@ -238,7 +238,9 @@ class WorkWithUsMiniature extends StatelessWidget {
                   ),
                   ElevatedButton(
                     child: const Text('Not sure...'),
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.of(context).pop('Cancel');
+                    },
                   ),
                 ],
               ),
