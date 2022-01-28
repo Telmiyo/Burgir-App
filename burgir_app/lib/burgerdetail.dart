@@ -219,7 +219,9 @@ class _LikedButtonState extends State<LikedButton> {
         // margin: const EdgeInsets.symmetric(vertical: 20, horizontal: 30),
         child: InkWell(
           onTap: () {
-            setState(() {});
+            setState(() {
+              !burgir.wishlist;
+            });
           },
           child: DecoratedIcon(
             widget.burger.wishlist ? Icons.favorite : Icons.favorite_outline,

@@ -24,8 +24,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'BURGIRS APP',
       theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
+          primaryColor: Colors.white,
+          primarySwatch: Colors.amber,
+          canvasColor: Colors.white,
+          appBarTheme: const AppBarTheme(elevation: 0, color: Colors.white)),
       home: const Navigation(),
     );
   }

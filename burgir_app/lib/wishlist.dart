@@ -43,16 +43,29 @@ class WishList extends StatelessWidget {
                   index,
                 ) {
                   borgirs = snapshot.data!.docs[index];
-                  return BurgerCard(
-                    Burger(
-                      borgirs["name"],
-                      borgirs["price"],
-                      borgirs["link"],
-                      borgirs["ilink"],
-                      borgirs["wishlist"],
-                      borgirs["offer"],
-                    ),
-                  );
+
+                  if (borgirs["wishlist"]) {
+                    return BurgerCard(
+                      Burger(
+                        borgirs["name"],
+                        borgirs["price"],
+                        borgirs["link"],
+                        borgirs["ilink"],
+                        borgirs["wishlist"],
+                        borgirs["offer"],
+                      ),
+                    );
+                  } else {
+                    return BurgerCard(
+                      Burger(
+                          "Empty",
+                          "price",
+                          "https://opensea.io/collection/burger-buddies-collection",
+                          "https://www.creativefabrica.com/wp-content/uploads/2021/03/12/empty-box-icon-for-your-project-Graphics-9511703-1.jpg",
+                          false,
+                          Timestamp(0, 0)),
+                    );
+                  }
                 },
               ),
             );
