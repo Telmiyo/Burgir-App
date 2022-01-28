@@ -1,3 +1,4 @@
+import 'package:burgir_app/AboutUs/character_list.dart';
 import 'package:burgir_app/config.dart';
 import 'package:flutter/material.dart';
 import 'package:decorated_icon/decorated_icon.dart';
@@ -10,55 +11,26 @@ class AboutUs extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: Configurations.instance.CustomAppbar("About Us"),
-        // body: DecoratedBox(
-        //   decoration: const BoxDecoration(
-        //     image: DecorationImage(
-        //       image: AssetImage('assets/background.png'),
-        //       fit: BoxFit.cover,
-        //     ),
-        //   ),
-        //   child:
-        body: Padding(
-            padding: EdgeInsets.all(50),
-            child: Scrollbar(
-              child: Column(
-                children: [
-                  Configurations.instance
-                      .CustomHeader('BURGER BUDDIES', 50.0, TextAlign.center),
-                  const DecoratedBox(
-                    decoration: BoxDecoration(
-                      image: DecorationImage(
-                        image: AssetImage('assets/logo.png'),
-                        fit: BoxFit.cover,
-                      ),
-                    ),
-                  ),
-                  RichText(
-                    text: TextSpan(
-                      text: 'This is Burger Buddies,',
-                      style: Configurations.instance.textStyle,
-                      children: <TextSpan>[
-                        TextSpan(
-                          text: 'A way to introduce NFTs.',
-                          style: Configurations.instance.textStyle,
-                        )
-                      ],
-                    ),
-                  ),
-                  const Header(),
-                  const MeetTheTeam(),
-                ],
-              ),
-            ))
+      appBar: Configurations.instance.CustomAppbar("About Us"),
+      // body: DecoratedBox(
+      //   decoration: const BoxDecoration(
+      //     image: DecorationImage(
+      //       image: AssetImage('assets/background.png'),
+      //       fit: BoxFit.cover,
+      //     ),
+      //   ),
+      //   child:
+      body: const CharacterListing(),
+      // const Header(),
+      // const MeetTheTeam(),
 
-        // body: Column(
-        //   children: const [
-        //     Header(),
-        //     MeetTheTeam(),
-        //   ],
-        // ),
-        );
+      // body: Column(
+      //   children: const [
+      //     Header(),
+      //     MeetTheTeam(),
+      //   ],
+      // ),
+    );
   }
 }
 

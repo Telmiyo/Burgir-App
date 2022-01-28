@@ -6,7 +6,7 @@ class Configurations {
   static final Color _secondaryColor = Colors.grey.shade300;
   static final Color _shadowColor = Colors.grey.shade600;
   static const Color _textColor = Colors.black;
-  static final TextStyle _textStyle = GoogleFonts.lato(
+  static final TextStyle _textStyle = GoogleFonts.workSans(
     color: _textColor,
     fontSize: 10.0,
     letterSpacing: 3.0,
@@ -20,6 +20,29 @@ class Configurations {
   TextStyle get textStyle => _textStyle;
 
   //Functions
+  static TextStyle display1 = GoogleFonts.workSans(
+      color: Colors.black,
+      fontSize: 38,
+      fontWeight: FontWeight.w600,
+      letterSpacing: 1.2);
+
+  static TextStyle display2 = GoogleFonts.workSans(
+      color: Colors.black,
+      fontSize: 32,
+      fontWeight: FontWeight.normal,
+      letterSpacing: 1.1);
+
+  static TextStyle h1 = GoogleFonts.workSans(
+      color: Colors.white.withOpacity(0.8),
+      fontSize: 25,
+      fontWeight: FontWeight.w900,
+      letterSpacing: 0.8);
+
+  static TextStyle h2 = GoogleFonts.workSans(
+      color: Colors.white.withOpacity(0.8),
+      fontSize: 21,
+      fontWeight: FontWeight.w500,
+      letterSpacing: 1.5);
 
   // ignore: non_constant_identifier_names
   Text CustomText(String text, double size, TextAlign align, Color color) {
@@ -62,6 +85,13 @@ class Configurations {
           borderRadius: BorderRadius.only(
               bottomLeft: Radius.circular(30),
               bottomRight: Radius.circular(30))),
+      leading: const Icon(Icons.arrow_back_ios),
+      actions: const <Widget>[
+        Padding(
+          padding: EdgeInsets.only(right: 16),
+          child: Icon(Icons.search),
+        )
+      ],
     );
   }
 
