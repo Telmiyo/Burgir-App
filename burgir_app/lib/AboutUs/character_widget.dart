@@ -50,6 +50,7 @@ class CharacterWidget extends StatelessWidget {
             child: Hero(
               tag: "image-${character.name}",
               child: CircleAvatar(
+                backgroundColor: Colors.transparent,
                 radius: 0.2 * screenWidth,
                 backgroundImage: AssetImage(
                   character.imagePath,
