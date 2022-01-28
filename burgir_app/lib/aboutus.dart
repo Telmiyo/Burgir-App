@@ -20,7 +20,6 @@ class _AboutUsState extends State<AboutUs> {
   int currentPage = 0;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     _pageController = PageController(
         viewportFraction: 1.0, initialPage: currentPage, keepPage: false);
@@ -33,27 +32,28 @@ class _AboutUsState extends State<AboutUs> {
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Padding(
-                padding: const EdgeInsets.only(left: 32.0, top: 8.0),
-                child: RichText(
-                    text: TextSpan(children: [
-                  TextSpan(
-                      text: "Burger Buddies", style: Configurations.display1),
-                  const TextSpan(text: "\n"),
-                  TextSpan(
-                      text: "A new way to introduce NFTs",
-                      style: Configurations.display2)
-                ]))),
-            Expanded(
-              child: PageView(
-                controller: _pageController,
-                children: <Widget>[
-                  for (var i = 0; i < characters.length; i++)
-                    CharacterWidget(character: characters[i]),
-                  MeetTheTeam(),
-                ],
+            ListView(children: [
+              Padding(
+                  padding: const EdgeInsets.only(left: 32.0, top: 8.0),
+                  child: RichText(
+                      text: TextSpan(children: [
+                    TextSpan(
+                        text: "Burger Buddies", style: Configurations.display1),
+                    const TextSpan(text: "\n"),
+                    TextSpan(
+                        text: "A new way to introduce NFTs",
+                        style: Configurations.display2)
+                  ]))),
+              Expanded(
+                child: PageView(
+                  controller: _pageController,
+                  children: <Widget>[
+                    for (var i = 0; i < characters.length; i++)
+                      CharacterWidget(character: characters[i])
+                  ],
+                ),
               ),
-            ),
+            ]),
           ],
         ));
   }

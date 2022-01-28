@@ -6,7 +6,9 @@ import 'character_detail_screen.dart';
 
 class CharacterWidget extends StatelessWidget {
   final Character character;
-  const CharacterWidget({Key? key, required this.character}) : super(key: key);
+  final dynamic doc;
+  const CharacterWidget({Key? key, required this.character, this.doc})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -47,9 +49,11 @@ class CharacterWidget extends StatelessWidget {
             alignment: Alignment.center,
             child: Hero(
               tag: "image-${character.name}",
-              child: Image.asset(
-                character.imagePath,
-                height: screenHeigh * 0.4,
+              child: CircleAvatar(
+                radius: 0.2 * screenWidth,
+                backgroundImage: AssetImage(
+                  character.imagePath,
+                ),
               ),
             ),
           ),
